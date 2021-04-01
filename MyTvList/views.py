@@ -12,10 +12,9 @@ def index(request):
 
     context_dict = {}
 
-    response = render(request, 'MyTvList/index.html', context=context_dict)
+    response = render(request, 'Homepage.html', context=context_dict)
 
     return response
-
 
 def register(request):
     registered = False
@@ -61,7 +60,7 @@ def user_login(request):
                 login(request, user)
                 return redirect(reverse('MyTvList:index'))
             else:
-                return HttpResponse("Your MyTvList account is diabled")
+                return HttpResponse("Your MyTvList account is disabled")
         else:
             print(f"Invalid login details: {username}, {password}")
             return HttpResponse("Invalid login details supplied.")

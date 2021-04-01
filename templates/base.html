@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title_block %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <!-- header appears at the top of the page -->
+            <!-- image of the logo of the site followed by the title -->
+            <img src="logo.jpg" alt="logo">
+            <h1>MyTV List</h1>
+
+            <!-- nav bar with links to each major page in the site -->
+            <center>
+                <a href="{% url 'MyTvList:index' %}">homepage</a>
+                <a href="{% url 'MyTvList:topshows' %}">top shows</a>
+                <a href="{% url 'MyTvList:recommended' %}">Recommended for you</a>
+                <a href="{% url 'MyTvList:add_show' %}">add a show</a></center>
+
+            <!-- profile pic -->
+            <img src="ProfilePic.jpg" alt="profile pic" style="float:right;">
+
+            <!-- search bar leads to results page -->
+            <div class="searchBar" style="float:right;">
+                <form action="search">
+                    <input type="text" placeholder="Search shows/users" name="search">
+                    <button type="submit"><i class="enterSearch">Submit</i></button>
+                </form>
+            </div>
+
+            <!-- link for users to log in -->
+            <br><br>
+            {% if user.is_authenticated %}
+                <a href="{% url 'MyTvList:logout' %}" style="float:right;">logout</a>
+            {% else %}
+                <a href="{% url 'MyTvList:login' %}" style="float:right;">login</a>
+            {% endif %}
+    </header>
+
+    <section>
+        {% block section_block %}
+        {% endblock %}
+    </section>
+</body>
+</html>
