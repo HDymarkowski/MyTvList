@@ -6,10 +6,12 @@ from MyTvList.models import UserProfile
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
+    # GET THEM TO INPUT FAVOURITE SHOW
+
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password',)
+        fields = ('username', 'email', 'password')
 
     def clean(self):
         cleaned_data = super(UserForm, self).clean()
@@ -24,4 +26,4 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('website', 'picture',)
+        fields = ('website', 'picture')

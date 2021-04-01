@@ -6,68 +6,29 @@
 {% endblock %}
 
 {% block section_block %}
+
+{% if recs %}
 <table>
 	<tr>
+		{% for rec in recs %}
 		<th>
 			<div Class="recommendedShow">
 				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
+				<img src="{{ rec.poster_path }}" alt="thumbnail">
 				<h3>
-					Show title
+					{{ rec.title }}
 				</h3>
+				<p>{{ rec.tagline }}</p>
 				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
+					{{ rec.rating }}
+				<!-- Ratings still to be sorted -->
 				</div>
-	
-				<p>
-					description
-				</p>
 			</div>
 		</th>
-		<th>
-			<div Class="recommendedShow">
-				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
-				<h3>
-					Show title
-				</h3>
-				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
-				</div>
-	
-				<p>
-					description
-				</p>
-			</div>
-		</th>
-		<th>
-			<div Class="recommendedShow">
-				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
-				<h3>
-					Show title
-				</h3>
-				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
-				</div>
-	
-				<p>
-					description
-				</p>
-			</div>
-		</th>
+		{% endfor %}
 	</tr>
 </table>
+{% else %}
+<p>No Reccomendations for you user</p>
+{% endif %}
 {% endblock %}

@@ -1,3 +1,4 @@
+from MyTvList.models import UserProfile
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -6,6 +7,7 @@ from MyTvList.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+import tmdbSimpleApi
 
 # Create your views here.
 def index(request):
@@ -91,6 +93,10 @@ def topshows(request):
 def recommended(request):
 
     context_dict = {}
+
+    UserFavouriteShow = UserProfile.favouriteShow
+    context_dict['recs' : tmdbSimpleApi.getRecommendations(UserFavouriteShow)]
+    #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
     response = render(request, 'Recommended.html', context=context_dict)
 

@@ -9,6 +9,8 @@ class UserProfile(models.Model):
 
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
+    # Favourite show will be stored by it's tmdb code number
+    # favouriteShow = models.IntegerField()
 
     def __str__(self):
         return self.user.username
