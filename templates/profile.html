@@ -1,124 +1,90 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>profile</title>
-</head>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-<body>
-	<header>
-	<!-- header appears at the top of the page -->
-		<!-- image of the logo of the site followed by the title -->
-		<img src="logo.jpg" alt="logo">
-		<h1>MyTV List</h1>
-		
-		<!-- nav bar with links to each major page in the site -->
-		<center>
-			<a href="homepage.html">homepage</a>
-			<a href="topshows.html">top shows</a>
-			<a href="recommended.html">Recommended for you</a>
-			<a href="addashow.html">add a show</a></center>
-		
-		<!-- profile pic -->
-		<img src="ProfilePic.jpg" alt="profile pic" style="float:right;">
-		
-		<!-- search bar leads to results page -->
-		<div class="searchBar" style="float:right;">
-			<form action="search">
-      			<input type="text" placeholder="Search shows/users" name="search">
-      			<button type="submit"><i class="enterSearch">Submit</i></button>
-    		</form>
-  		</div>
-		
-		<!-- link for users to log in -->
-		<br><br>
-	  	<a href="login.html" style="float:right;">login</a>
-		<br><br>
-	</header>
+{% block title_block %}
+	Profile
+{% endblock %}
+
+{% block section_block %}
+<article>
+	<h2>
+		Watchlist
+	</h2>
 	
+	<table>
+		<tr>
+			<th>
+				<div Class="Watchlist">
+					<!-- this section displays an entry for the users watchlist -->
+					<img src="watchlist.jpg" alt="thumbnail">
+					<h3>
+						Show title
+					</h3>
+					<div Class="userRating">
+						<img src="rating1.jpg">
+						<img src="rating2.jpg">
+						<img src="rating3.jpg">
+						<img src="rating4.jpg">
+						<img src="rating5.jpg">
+					</div>
+
+					<p>
+						user review
+					</p>
+				</div>
+			</th>
+			<th>
+				<div Class="Watchlist">
+					<!-- this section displays an entry for the users watchlist -->
+					<img src="watchlist.jpg" alt="thumbnail">
+					<h3>
+						Show title
+					</h3>
+					<div Class="userRating">
+						<img src="rating1.jpg">
+						<img src="rating2.jpg">
+						<img src="rating3.jpg">
+						<img src="rating4.jpg">
+						<img src="rating5.jpg">
+					</div>
+
+					<p>
+						user review
+					</p>
+				</div>
+			</th>
+		</tr>
+	</table>
+</article>
+
+<aside>
+<!-- displays information about the user -->
 	
-	<section>
-		<article>
-			<h2>
-				Watchlist
-			</h2>
-			
-			<table>
-				<tr>
-					<th>
-						<div Class="Watchlist">
-							<!-- this section displays an entry for the users watchlist -->
-							<img src="watchlist.jpg" alt="thumbnail">
-							<h3>
-								Show title
-							</h3>
-							<div Class="userRating">
-								<img src="rating1.jpg">
-								<img src="rating2.jpg">
-								<img src="rating3.jpg">
-								<img src="rating4.jpg">
-								<img src="rating5.jpg">
-							</div>
-
-							<p>
-								user review
-							</p>
-						</div>
-					</th>
-					<th>
-						<div Class="Watchlist">
-							<!-- this section displays an entry for the users watchlist -->
-							<img src="watchlist.jpg" alt="thumbnail">
-							<h3>
-								Show title
-							</h3>
-							<div Class="userRating">
-								<img src="rating1.jpg">
-								<img src="rating2.jpg">
-								<img src="rating3.jpg">
-								<img src="rating4.jpg">
-								<img src="rating5.jpg">
-							</div>
-
-							<p>
-								user review
-							</p>
-						</div>
-					</th>
-				</tr>
-			</table>
-		</article>
+	<!-- only appears when the user is logged into the displayed account -->
+	<a href="editprofile.html">
+		edit
+	</a>
+	<br>
+	
+	<img src="profilepic.html" alt="profile pic">
+	
+	<h2>
+		Username
+	</h2>
+	
+	<p>
+		about this user
+	</p>
+	
+	<div class="favorite tags">
+		<!-- this section displays the users preferred tags -->
+		<h3>favorite tags</h3>
 		
-		<aside>
-		<!-- displays information about the user -->
-			
-			<!-- only appears when the user is logged into the displayed account -->
-			<a href="editprofile.html">
-				edit
-			</a>
-			<br>
-			
-			<img src="profilepic.html" alt="profile pic">
-			
-			<h2>
-				Username
-			</h2>
-			
-			<p>
-				about this user
-			</p>
-			
-			<div class="favorite tags">
-				<!-- this section displays the users preferred tags -->
-				<h3>favorite tags</h3>
-				
-				<ul>
-					<li>tag1</li>
-					<li>tag2</li>
-					<li>tag3</li>
-				</ul>
-			</div>
-		</aside>
-	</section>
-</body>
-</html>
+		<ul>
+			<li>tag1</li>
+			<li>tag2</li>
+			<li>tag3</li>
+		</ul>
+	</div>
+</aside>
+{% endblock %}

@@ -1,44 +1,44 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Top shows</title>
-</head>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-<body>
-	<header>
-	<!-- header appears at the top of the page -->
-		<!-- image of the logo of the site followed by the title -->
-		<img src="logo.jpg" alt="logo">
-		<h1>MyTV List</h1>
-		
-		<!-- nav bar with links to each major page in the site -->
-		<center>
-			<a href="homepage.html">homepage</a>
-			<a href="topshows.html">top shows</a>
-			<a href="recommended.html">Recommended for you</a>
-			<a href="addashow.html">add a show</a></center>
-		
-		<!-- profile pic -->
-		<img src="ProfilePic.jpg" alt="profile pic" style="float:right;">
-		
-		<!-- search bar leads to results page -->
-		<div class="searchBar" style="float:right;">
-			<form action="search">
-      			<input type="text" placeholder="Search shows/users" name="search">
-      			<button type="submit"><i class="enterSearch">Submit</i></button>
-    		</form>
-  		</div>
-		
-		<!-- link for users to log in -->
-		<br><br>
-	  	<a href="login.html" style="float:right;">login</a>
-		<br><br>
-	</header>
-	
-	<section>
-		<article>
-				<div class="countdown entry">
+{% block title_block %}
+	Top Shows
+{% endblock %}
+
+{% block section_block %}
+<article>
+		<div class="countdown entry">
+			<!-- this section displays a top show entry -->
+			<img src="thumbnail.jpg" alt="thumbnail">
+			<h3>
+				number
+			</h3>
+			<h2>
+				show title
+			</h2>
+			<p1>
+				description
+			</p1>
+		</div>
+	<table>
+		<tr>
+			<th>
+			<div class="countdownEntry10">
+				<!-- this section displays a top show entry -->
+				<img src="thumbnail.jpg" alt="thumbnail">
+				<h3>
+					number
+				</h3>
+				<h2>
+					show title
+				</h2>
+				<p1>
+					description
+				</p1>
+			</div>
+			</th>
+			<th>
+				<div class="countdownEntry9">
 					<!-- this section displays a top show entry -->
 					<img src="thumbnail.jpg" alt="thumbnail">
 					<h3>
@@ -51,170 +51,137 @@
 						description
 					</p1>
 				</div>
-			<table>
-				<tr>
-					<th>
-					<div class="countdownEntry10">
-						<!-- this section displays a top show entry -->
-						<img src="thumbnail.jpg" alt="thumbnail">
-						<h3>
-							number
-						</h3>
-						<h2>
-							show title
-						</h2>
-						<p1>
-							description
-						</p1>
-					</div>
-					</th>
-					<th>
-						<div class="countdownEntry9">
-							<!-- this section displays a top show entry -->
-							<img src="thumbnail.jpg" alt="thumbnail">
-							<h3>
-								number
-							</h3>
-							<h2>
-								show title
-							</h2>
-							<p1>
-								description
-							</p1>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-					<div class="countdownEntry8">
-						<!-- this section displays a top show entry -->
-						<img src="thumbnail.jpg" alt="thumbnail">
-						<h3>
-							number
-						</h3>
-						<h2>
-							show title
-						</h2>
-						<p1>
-							description
-						</p1>
-					</div>
-					</th>
-					<th>
-						<div class="countdownEntry7">
-							<!-- this section displays a top show entry -->
-							<img src="thumbnail.jpg" alt="thumbnail">
-							<h3>
-								number
-							</h3>
-							<h2>
-								show title
-							</h2>
-							<p1>
-								description
-							</p1>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-					<div class="countdownEntry6">
-						<!-- this section displays a top show entry -->
-						<img src="thumbnail.jpg" alt="thumbnail">
-						<h3>
-							number
-						</h3>
-						<h2>
-							show title
-						</h2>
-						<p1>
-							description
-						</p1>
-					</div>
-					</th>
-					<th>
-						<div class="countdownEntry5">
-							<!-- this section displays a top show entry -->
-							<img src="thumbnail.jpg" alt="thumbnail">
-							<h3>
-								number
-							</h3>
-							<h2>
-								show title
-							</h2>
-							<p1>
-								description
-							</p1>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-					<div class="countdownEntry4">
-						<!-- this section displays a top show entry -->
-						<img src="thumbnail.jpg" alt="thumbnail">
-						<h3>
-							number
-						</h3>
-						<h2>
-							show title
-						</h2>
-						<p1>
-							description
-						</p1>
-					</div>
-					</th>
-					<th>
-						<div class="countdownEntry3">
-							<!-- this section displays a top show entry -->
-							<img src="thumbnail.jpg" alt="thumbnail">
-							<h3>
-								number
-							</h3>
-							<h2>
-								show title
-							</h2>
-							<p1>
-								description
-							</p1>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-					<div class="countdownEntry2">
-						<!-- this section displays a top show entry -->
-						<img src="thumbnail.jpg" alt="thumbnail">
-						<h3>
-							number
-						</h3>
-						<h2>
-							show title
-						</h2>
-						<p1>
-							description
-						</p1>
-					</div>
-					</th>
-					<th>
-						<div class="countdownEntry1">
-							<!-- this section displays a top show entry -->
-							<img src="thumbnail.jpg" alt="thumbnail">
-							<h3>
-								number
-							</h3>
-							<h2>
-								show title
-							</h2>
-							<p1>
-								description
-							</p1>
-						</div>
-					</th>
-				</tr>
-			</table>
-			
-		</article>
-	</section>
-</body>
-</html>
+			</th>
+		</tr>
+		<tr>
+			<th>
+			<div class="countdownEntry8">
+				<!-- this section displays a top show entry -->
+				<img src="thumbnail.jpg" alt="thumbnail">
+				<h3>
+					number
+				</h3>
+				<h2>
+					show title
+				</h2>
+				<p1>
+					description
+				</p1>
+			</div>
+			</th>
+			<th>
+				<div class="countdownEntry7">
+					<!-- this section displays a top show entry -->
+					<img src="thumbnail.jpg" alt="thumbnail">
+					<h3>
+						number
+					</h3>
+					<h2>
+						show title
+					</h2>
+					<p1>
+						description
+					</p1>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+			<div class="countdownEntry6">
+				<!-- this section displays a top show entry -->
+				<img src="thumbnail.jpg" alt="thumbnail">
+				<h3>
+					number
+				</h3>
+				<h2>
+					show title
+				</h2>
+				<p1>
+					description
+				</p1>
+			</div>
+			</th>
+			<th>
+				<div class="countdownEntry5">
+					<!-- this section displays a top show entry -->
+					<img src="thumbnail.jpg" alt="thumbnail">
+					<h3>
+						number
+					</h3>
+					<h2>
+						show title
+					</h2>
+					<p1>
+						description
+					</p1>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+			<div class="countdownEntry4">
+				<!-- this section displays a top show entry -->
+				<img src="thumbnail.jpg" alt="thumbnail">
+				<h3>
+					number
+				</h3>
+				<h2>
+					show title
+				</h2>
+				<p1>
+					description
+				</p1>
+			</div>
+			</th>
+			<th>
+				<div class="countdownEntry3">
+					<!-- this section displays a top show entry -->
+					<img src="thumbnail.jpg" alt="thumbnail">
+					<h3>
+						number
+					</h3>
+					<h2>
+						show title
+					</h2>
+					<p1>
+						description
+					</p1>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+			<div class="countdownEntry2">
+				<!-- this section displays a top show entry -->
+				<img src="thumbnail.jpg" alt="thumbnail">
+				<h3>
+					number
+				</h3>
+				<h2>
+					show title
+				</h2>
+				<p1>
+					description
+				</p1>
+			</div>
+			</th>
+			<th>
+				<div class="countdownEntry1">
+					<!-- this section displays a top show entry -->
+					<img src="thumbnail.jpg" alt="thumbnail">
+					<h3>
+						number
+					</h3>
+					<h2>
+						show title
+					</h2>
+					<p1>
+						description
+					</p1>
+				</div>
+			</th>
+		</tr>
+	</table>
+	
+</article>
+{% endblock %}

@@ -1,170 +1,136 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>My Tv List</title>
-</head>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-<body>
-	<header>
-	<!-- header appears at the top of the page -->
-		<!-- image of the logo of the site followed by the title -->
-		<img src="logo.jpg" alt="logo">
-		<h1>MyTV List</h1>
-		
-		<!-- nav bar with links to each major page in the site -->
-		<center>
-			<a href="homepage.html">homepage</a>
-			<a href="topshows.html">top shows</a>
-			<a href="recommended.html">Recommended for you</a>
-			<a href="addashow.html">add a show</a></center>
-		
-		<!-- profile pic -->
-		<img src="ProfilePic.jpg" alt="profile pic" style="float:right;">
-		
-		<!-- search bar leads to results page -->
-		<div class="searchBar" style="float:right;">
-			<form action="search">
-      			<input type="text" placeholder="Search shows/users" name="search">
-      			<button type="submit"><i class="enterSearch">Submit</i></button>
-    		</form>
-  		</div>
-		
-		<!-- link for users to log in -->
-		<br><br>
-	  	<a href="login.html" style="float:right;">login</a>
-		<br><br>
-	</header>
-	
-	
-	<section>
-		<article>
-			<div class="Show">
-				<!-- this section displays info about the show -->
-				<iframe src="https://youtube.com/embed/"></iframe>
-				<h2>
-					show title
-				</h2>
-				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
+{% block title_block %}
+	Search Result
+{% endblock %}
+
+{% block section_block %}
+<article>
+	<div class="Show">
+		<!-- this section displays info about the show -->
+		<iframe src="https://youtube.com/embed/"></iframe>
+		<h2>
+			show title
+		</h2>
+		<div Class="ratings">
+			<img src="rating1.jpg">
+			<img src="rating2.jpg">
+			<img src="rating3.jpg">
+			<img src="rating4.jpg">
+			<img src="rating5.jpg">
+		</div>
+		<p1>
+			description
+		</p1>
+	</div>
+	<div Class="reviews">
+		<table>
+		<tr>
+			<th>
+				<div Class="review">
+					<!-- this section displays an entry for the review list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						Username
+					</h3>
+					<div Class="ratings">
+						<img src="rating1.jpg">
+						<img src="rating2.jpg">
+						<img src="rating3.jpg">
+						<img src="rating4.jpg">
+						<img src="rating5.jpg">
+					</div>
+					<p>
+						review
+					</p>
 				</div>
-				<p1>
-					description
-				</p1>
-			</div>
-			<div Class="reviews">
-				<table>
-				<tr>
-					<th>
-						<div Class="review">
-							<!-- this section displays an entry for the review list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								Username
-							</h3>
-							<div Class="ratings">
-								<img src="rating1.jpg">
-								<img src="rating2.jpg">
-								<img src="rating3.jpg">
-								<img src="rating4.jpg">
-								<img src="rating5.jpg">
-							</div>
-							<p>
-								review
-							</p>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div Class="review">
-							<!-- this section displays an entry for the review list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								Username
-							</h3>
-							<div Class="ratings">
-								<img src="rating1.jpg">
-								<img src="rating2.jpg">
-								<img src="rating3.jpg">
-								<img src="rating4.jpg">
-								<img src="rating5.jpg">
-							</div>
-							<p>
-								review
-							</p>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div Class="review">
-							<!-- this section displays an entry for the review list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								Username
-							</h3>
-							<div Class="ratings">
-								<img src="rating1.jpg">
-								<img src="rating2.jpg">
-								<img src="rating3.jpg">
-								<img src="rating4.jpg">
-								<img src="rating5.jpg">
-							</div>
-							<p>
-								review
-							</p>
-						</div>
-					</th>
-				</tr>
-			</table>
-			</div>
-		</article>
-		
-		<aside>
-			<h2>
-				Cast
-			</h2>
-			<table>
-				<tr>
-					<th>
-						<div Class="castMember">
-							<!-- this section displays an entry for the cast list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								cast name
-							</h3>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div Class="castMember">
-							<!-- this section displays an entry for the cast list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								cast name
-							</h3>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div Class="castMember">
-							<!-- this section displays an entry for the cast list -->
-							<img src="Thumbnail.jpg" alt="thumbnail">
-							<h3>
-								cast name
-							</h3>
-						</div>
-					</th>
-				</tr>
-			</table>
-		</aside>
-	</section>
-</body>
-</html>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<div Class="review">
+					<!-- this section displays an entry for the review list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						Username
+					</h3>
+					<div Class="ratings">
+						<img src="rating1.jpg">
+						<img src="rating2.jpg">
+						<img src="rating3.jpg">
+						<img src="rating4.jpg">
+						<img src="rating5.jpg">
+					</div>
+					<p>
+						review
+					</p>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<div Class="review">
+					<!-- this section displays an entry for the review list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						Username
+					</h3>
+					<div Class="ratings">
+						<img src="rating1.jpg">
+						<img src="rating2.jpg">
+						<img src="rating3.jpg">
+						<img src="rating4.jpg">
+						<img src="rating5.jpg">
+					</div>
+					<p>
+						review
+					</p>
+				</div>
+			</th>
+		</tr>
+	</table>
+	</div>
+</article>
+
+<aside>
+	<h2>
+		Cast
+	</h2>
+	<table>
+		<tr>
+			<th>
+				<div Class="castMember">
+					<!-- this section displays an entry for the cast list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						cast name
+					</h3>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<div Class="castMember">
+					<!-- this section displays an entry for the cast list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						cast name
+					</h3>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<div Class="castMember">
+					<!-- this section displays an entry for the cast list -->
+					<img src="Thumbnail.jpg" alt="thumbnail">
+					<h3>
+						cast name
+					</h3>
+				</div>
+			</th>
+		</tr>
+	</table>
+</aside>
+{% endblock %}
