@@ -79,3 +79,27 @@ def get_server_side_cookie(request, cookie, default_val=None):
     if not val:
         val = default_val
     return val
+
+def topshows(request):
+
+    context_dict = {}
+
+    response = render(request, 'TopShows.html', context=context_dict)
+
+    return response
+
+def recommended(request):
+
+    context_dict = {}
+
+    response = render(request, 'Recommended.html', context=context_dict)
+
+    return response
+
+def add_show(request):
+
+    context_dict = {}
+
+    response = render(request, 'castPage.html', context=context_dict)
+
+    return response
