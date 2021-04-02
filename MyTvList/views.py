@@ -18,7 +18,7 @@ def index(request):
 
     return response
 
-def register(request):
+def createAccount(request):
     registered = False
     
     if request.method == 'POST':
@@ -45,7 +45,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     return render(request,
-                  'register.html',
+                  'createAccount.html',
                   context = {'user_form': user_form,
                              'profile_form': profile_form,
                              'registered': registered})
