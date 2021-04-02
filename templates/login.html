@@ -7,6 +7,7 @@
 
 {% block section_block %}
 <form id="login_form" method="post" action="{% url 'MyTvList:login' %}">
+	{% csrf_token %}
 	<h2>
 		login
 	</h2>
@@ -17,7 +18,7 @@
 	<br>
 	<input type="submit">
 </form>
-<a href="createAccount.html">
+<a href="{% url 'MyTvList:register' %}">
 	create an account
 </a>
 {% endblock %}

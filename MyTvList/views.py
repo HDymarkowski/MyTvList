@@ -45,7 +45,7 @@ def register(request):
         profile_form = UserProfileForm()
 
     return render(request,
-                  'MyTvList/register.html',
+                  'register.html',
                   context = {'user_form': user_form,
                              'profile_form': profile_form,
                              'registered': registered})
@@ -68,7 +68,7 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render(request, 'MyTvList/login.html')
+        return render(request, 'login.html')
 
 @login_required
 def user_logout(request):
