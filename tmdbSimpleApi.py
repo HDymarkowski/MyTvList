@@ -11,13 +11,24 @@ tmdb.REQUESTS_SESSION = requests.session()
 # Title is movie = tmdb.Movies(code) movie.info()['title']
 
 def getId(show):
-    return None
     try:
         search = tmdb.Search()
         showId = search.tv(query=show)['results'][0]['id']
         return showId
     except HTTPError as e:
         # Maybe deal with this better
+        # ALT-OUTPUT empty list
+        return None
+
+def getIdPerson(person):
+    try:
+        search = tmdb.Search()
+        personId = search.person(query=person)['results'][0]['id']
+        return personId
+    except HTTPError as e:
+        # Maybe deal with this better
+        print("Show does not exist")
+        print("({})".format(e))
         # ALT-OUTPUT empty list
         return None
 
@@ -108,7 +119,20 @@ def getCast(show):
             # ALT-OUTPUT empty list
             return None
 
+def getCastMemberPage(member):
 
+    castMember = tmdb.People(member)
+    
+    info = castMember.info()
+    credits = castMember.tv_credits()['cast']
+    creditsList = []
+    for i in range(3):
+        creditsList.append({'name' : credits[i]['original_name'], 'description' : credits[i]['overview'], 'image' : credits[i]['poster_path']})
+    return ({'name' : info['name'], 'birthday' : info['birthday'], 'credits' : creditsList, 'image' : castMember.images()['profiles'][0]['file_path']})
+
+
+
+# print(getCastMemberPage(getIdPerson("James Gandolfini")))
 
 """
 img = Image.open("http://image.tmdb.org/tv" + tmdb.TV.images(tmdb.TV(1))['posters'][0]['file_path'])
