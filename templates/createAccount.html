@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block section_block %}
-<form action="login">
+<form id="user_form" method="post" action="{% url 'MyTvList:register' %}" enctype="multipart/form-data">
 	<h2>
 		Create an Account
 	</h2>
