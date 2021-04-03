@@ -103,10 +103,10 @@ def recommended(request):
     return response
 
 
-def castPage(request, castMember):
+def castPage(request):
 
-    context_dict = tmdbSimpleApi.getCastMemberPage(tmdbSimpleApi.getIdPerson(castMember))
-
+    #context_dict = tmdbSimpleApi.getCastMemberPage(tmdbSimpleApi.getIdPerson(castMember))
+    context_dict = tmdbSimpleApi.getCastMemberPage(tmdbSimpleApi.getIdPerson("James Gandolfini"))
     response = render(request, 'castPage.html',context=context_dict)
 
     return response

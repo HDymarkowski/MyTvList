@@ -132,7 +132,7 @@ def getCastMemberPage(member):
 
 
 
-# print(getCastMemberPage(getIdPerson("James Gandolfini")))
+print(getCastMemberPage(getIdPerson("James Gandolfini")))
 
 """
 img = Image.open("http://image.tmdb.org/tv" + tmdb.TV.images(tmdb.TV(1))['posters'][0]['file_path'])

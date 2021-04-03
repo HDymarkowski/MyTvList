@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block section_block %}
-{% if member %}
 <section>
 <aside>
 <!-- displays information about crew member -->
@@ -43,7 +42,7 @@
 					</div>
 
 					<p>
-						{{ credit.description}}
+						{{ credit.description }}
 					</p>
 				</div>
 			</th>
@@ -52,7 +51,4 @@
 	</table>
 </article>
 </section>
-{% else %}
-<p>This person does not exist</p>
-{% endif %}
 {% endblock %}
