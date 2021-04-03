@@ -94,7 +94,7 @@ def recommended(request):
 
     context_dict = {}
 
-    UserFavouriteShow = UserProfile.favouriteShow
+    UserFavouriteShow = UserProfile.favourite_Show_Name
     context_dict['recs' : tmdbSimpleApi.getRecommendations(UserFavouriteShow)]
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 

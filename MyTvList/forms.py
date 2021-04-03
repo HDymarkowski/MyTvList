@@ -2,16 +2,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from MyTvList.models import UserProfile
+from django.db import models
+import tmdbSimpleApi
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password = forms.CharField(widget=forms.PasswordInput())
-    # GET THEM TO INPUT FAVOURITE SHOW
-
+    confirm_password = forms.CharField(widget=forms.PasswordInput())    
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email', 'password', )
 
     def clean(self):
         cleaned_data = super(UserForm, self).clean()
@@ -24,6 +24,22 @@ class UserForm(forms.ModelForm):
         return cleaned_data
 
 class UserProfileForm(forms.ModelForm):
+
+    #favouriteShow = tmdbSimpleApi.getId(favourite_Show_Name)
+    #if favouriteShow == None:
+        #self.add_error('favourite_Show_Name', 'Can not find show')
+
     class Meta:
         model = UserProfile
-        fields = ('website', 'picture')
+        fields = ('website', 'picture', 'favourite_Show_Name',)
+
+    
+    def clean(self):
+        cleaned_data = super(UserProfileForm, self).clean()
+
+        favourite_Show_Name = cleaned_data.get("favourite_Show_Name")
+        favouriteShow = tmdbSimpleApi.getId(favourite_Show_Name)
+        if favouriteShow == None:
+            self.add_error('favourite_Show_Name', 'Can not find show')        
+
+        return cleaned_data

@@ -11,14 +11,13 @@ tmdb.REQUESTS_SESSION = requests.session()
 # Title is movie = tmdb.Movies(code) movie.info()['title']
 
 def getId(show):
+    return None
     try:
         search = tmdb.Search()
         showId = search.tv(query=show)['results'][0]['id']
         return showId
     except HTTPError as e:
         # Maybe deal with this better
-        print("Show does not exist")
-        print("({})".format(e))
         # ALT-OUTPUT empty list
         return None
 
@@ -26,23 +25,29 @@ def getId(show):
 def getRecommendations(show):
     # Returns top 8 (if possible) reccomendations of the show inputted
     # List of dictionaries containing 'title', 'tagline' and 'poster_path'
-    recs = []
-    #ShowID = getID(show)
-    showId = show
+    try:
+        recs = []
+        showId = getId(show)
+        #showId = show
 
-    reccomendations = tmdb.TV.recommendations(tmdb.TV(showId))
-    reccomendedShows = reccomendations['results']
-    noReccomedations = reccomendations['total_results']
+        reccomendations = tmdb.TV.recommendations(tmdb.TV(showId))
+        reccomendedShows = reccomendations['results']
+        noReccomedations = reccomendations['total_results']
 
-    for i in range(min(8, noReccomedations)):
-        curId = int(reccomendedShows[i]['id'])
-        curInfo = tmdb.TV(int(curId)).info()
-        recs.append(
-            {'title': curInfo['name'], 'tagline': curInfo['tagline'], 'poster_path': curInfo['poster_path']})
+        for i in range(min(8, noReccomedations)):
+            curId = int(reccomendedShows[i]['id'])
+            curInfo = tmdb.TV(int(curId)).info()
+            recs.append(
+                {'title': curInfo['name'], 'tagline': curInfo['tagline'], 'poster_path': curInfo['poster_path']})
 
     # OUTPUT List (length 0 - 5) with keys:
     # {'title', 'tagline', 'poster_path'}
-    return recs
+        return recs
+
+    except HTTPError as e:
+        # Maybe deal with this better
+        # ALT-OUTPUT empty list
+        return None
 
 
 def getShow(show):
