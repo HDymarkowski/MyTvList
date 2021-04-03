@@ -12,7 +12,13 @@ import tmdbSimpleApi
 # Create your views here.
 def index(request):
 
+    # TODO add like if user logged in show reccomendations or else don't
+    # TODO make getPopular to work somehow?
     context_dict = {}
+    context_dict['popular'] = tmdbSimpleApi.getPopular()
+    UserFavouriteShow = UserProfile.favourite_Show_Name
+    context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
+
 
     response = render(request, 'Homepage.html', context=context_dict)
 
@@ -95,7 +101,7 @@ def recommended(request):
     context_dict = {}
 
     UserFavouriteShow = UserProfile.favourite_Show_Name
-    context_dict['recs' : tmdbSimpleApi.getRecommendations(UserFavouriteShow)]
+    context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
     response = render(request, 'Recommended.html', context=context_dict)

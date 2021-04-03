@@ -4,6 +4,7 @@ from requests.models import HTTPError
 import tmdbsimple as tmdb
 import requests
 from tmdbsimple import search
+from tmdbsimple.tv import TV
 
 tmdb.API_KEY = 'a2b67da805cffb9ba951a0f56da1e603'
 tmdb.REQUESTS_SESSION = requests.session()
@@ -33,7 +34,8 @@ def getIdPerson(person):
         return None
 
 
-def getRecommendations(show):
+def getRecommendations(show, n):
+    # n = number of reccomendations
     # Returns top 8 (if possible) reccomendations of the show inputted
     # List of dictionaries containing 'title', 'tagline' and 'poster_path'
     try:
@@ -45,7 +47,7 @@ def getRecommendations(show):
         reccomendedShows = reccomendations['results']
         noReccomedations = reccomendations['total_results']
 
-        for i in range(min(8, noReccomedations)):
+        for i in range(min(n, noReccomedations)):
             curId = int(reccomendedShows[i]['id'])
             curInfo = tmdb.TV(int(curId)).info()
             recs.append(
@@ -130,9 +132,9 @@ def getCastMemberPage(member):
         creditsList.append({'name' : credits[i]['original_name'], 'description' : credits[i]['overview'], 'image' : credits[i]['poster_path']})
     return ({'name' : info['name'], 'birthday' : info['birthday'], 'credits' : creditsList, 'image' : castMember.images()['profiles'][0]['file_path']})
 
-
-
-print(getCastMemberPage(getIdPerson("James Gandolfini")))
+def getPopular():
+    # Not working for some reason?
+    return TV.popular
 
 """
 img = Image.open("http://image.tmdb.org/tv" + tmdb.TV.images(tmdb.TV(1))['posters'][0]['file_path'])

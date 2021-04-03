@@ -6,74 +6,40 @@
 {% endblock %}
 	
 {% block section_block %}
+{% if popular %}
 <article>
 	<div class="topShow">
 		<!-- this section displays the top rated show -->
-		<iframe src="https://youtube.com/embed/"></iframe>
+		<!-- I replaced the youtube video with an image here-->
+		<img src = "{{ popular.image }}">
 		<h2>
-			top show title
+			{{ popular.name }}
 		</h2>
 		<p1>
-			description
+			{{ popular.description }}
 		</p1>
 	</div>
 </article>
-
+{% else %}
+<p>Cannot retreive a popular show</p>
+{% endif %}
+{% if recs %}
 <aside>
 	<h2>
 		recommended for you
 	</h2>
 	<table>
+		{% for rec in recs %}
 		<tr>
 			<th>
 			<div Class="recommendedShow">
 				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
+				<img src="{{ rec.poster_path }}" alt="thumbnail">
 				<h3>
-					Show title
+					{{ rec.title }}
 				</h3>
 				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
-				</div>
-			</div>
-		</th>
-		</tr>
-		<tr>
-			<th>
-			<div Class="recommendedShow">
-				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
-				<h3>
-					Show title
-				</h3>
-				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
-				</div>
-			</div>
-		</th>
-		</tr>
-		<tr>
-			<th>
-			<div Class="recommendedShow">
-				<!-- this section displays an entry for the recommended shows list -->
-				<img src="Thumbnail.jpg" alt="thumbnail">
-				<h3>
-					Show title
-				</h3>
-				<div Class="ratings">
-					<img src="rating1.jpg">
-					<img src="rating2.jpg">
-					<img src="rating3.jpg">
-					<img src="rating4.jpg">
-					<img src="rating5.jpg">
+					{{ rec.rating }}
 				</div>
 			</div>
 		</th>

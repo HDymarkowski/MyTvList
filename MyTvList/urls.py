@@ -3,6 +3,7 @@ from MyTvList import views
 app_name = 'MyTvList'
 urlpatterns = [
     path('', views.index, name='index'),
+    # index = Homepage.html
     path('createAccount/', views.createAccount, name='createAccount'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
