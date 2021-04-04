@@ -57,7 +57,7 @@
 	position: relative;
 }
 .MyTvListHeader .search_container .search_box {
-	width: 400px;
+	width: 430px;
 	background: #fff;
 	height: 40px;
 	border-radius: 5px;
@@ -124,9 +124,19 @@
 }
 
 .MyTvListHeader .search_container .search_box .search_field {
-	width: 220px;
+	width: 280px;
 	height: 100%;
 	position: relative;
+}
+
+.MyTvListHeader .search_container .search_box .search_field.active .autocom_box {
+	opacity: 1;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.MyTvListHeader .search_container .search_box .search_field.active .autocom_box li {
+	display: block;
 }
 
 .MyTvListHeader .search_container .search_box .search_field .input {
@@ -149,6 +159,46 @@
 	color: #3c2f2f;;
 	cursor: pointer;
 }
+
+.MyTvListHeader .search_container .search_box .search_field .autocom_box {
+	overflow-y: auto;
+	position: absolute;
+	top: 35px;
+	left: -4px;
+	background: #fff;
+	width: 280px;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 8px 8px 6px -10px #b3c6ff;
+	background: #fff;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.MyTvListHeader .search_container .search_box .search_field .autocom_box li {
+	list-style: none;
+	padding-bottom: 10px;
+	color: #3c2f2f;
+	display: none;
+}
+.MyTvListHeader .search_container .search_box .search_field .autocom_box li:last-child {
+	padding-bottom: 0;
+}
+
+.MyTvListHeader .search_container .search_box .search_field .autocom_box li:hover {
+	color: #be9b7b;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 ::-webkit-input-placeholder{
 	color: #3c2f2f;
