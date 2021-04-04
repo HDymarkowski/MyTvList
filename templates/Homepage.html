@@ -23,33 +23,35 @@
 {% else %}
 <p>Cannot retreive a popular show</p>
 {% endif %}
-{% if recs %}
-<aside>
-	<h2>
-		recommended for you
-	</h2>
-	<table>
-		<tr>
-			{% for rec in recs %}
-			<th>
-			<div Class="recommendedShow">
-				<!-- this section displays an entry for the recommended shows list -->
-				<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 200px, height = 300px>
-				<h3>
-					{{ rec.title }}
-				</h3>
-				<p>{{ rec.tagline }}</p>
-				<div Class="ratings">
-					{{ rec.rating }}
+{% if user.is_authenticated %}
+	{% if recs %}
+	<aside>
+		<h2>
+			recommended for you
+		</h2>
+		<table>
+			<tr>
+				{% for rec in recs %}
+				<th>
+				<div Class="recommendedShow">
+					<!-- this section displays an entry for the recommended shows list -->
+					<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 200px, height = 300px>
+					<h3>
+						{{ rec.title }}
+					</h3>
+					<p>{{ rec.tagline }}</p>
+					<div Class="ratings">
+						{{ rec.rating }}
+					</div>
 				</div>
-			</div>
-		</th>
-		{% endfor %}
-		</tr>
-	</table>
-	
-	<!-- link leads to the recommended page -->
-	<a href="recommended.html">see more</a>
-</aside>
+			</th>
+			{% endfor %}
+			</tr>
+		</table>
+		
+		<!-- link leads to the recommended page -->
+		<a href="recommended.html">see more</a>
+	</aside>
+	{% endif %}
 {% endif %}
 {% endblock %}
