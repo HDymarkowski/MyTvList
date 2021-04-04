@@ -55,18 +55,20 @@
 
                 <li><a href="{% url 'MyTvList:index' %}">Homepage</a></li>
                 <li><a href="{% url 'MyTvList:topshows' %}">Top shows</a></li>
-                <li><a href="{% url 'MyTvList:recommended' %}">Recommended for you</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'MyTvList:recommended' %}">Recommended for you</a></li>
+                {% endif %}
                 <li>
                     <div class="search_container">
                         <div class="search_box">
                             <div class="dropdown">
                                 <div class="default">
-                                    All                                    
+                                    Shows                                    
                                 </div>
                                 <ul>
-                                    <li>Movies</li> 
+                                    <li>?????</li> 
                                     <li>Shows</li>
-                                    <li>Users</li>
+                                    <li>?????</li>
                                 </ul>
                             </div>
                             <div class="search_field">
