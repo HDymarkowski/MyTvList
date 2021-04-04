@@ -129,10 +129,15 @@ def getCastMemberPage(member):
         creditsList.append({'name' : credits[i]['original_name'], 'description' : credits[i]['overview'], 'image' : credits[i]['poster_path']})
     return ({'name' : info['name'], 'birthday' : info['birthday'], 'credits' : creditsList, 'image' : castMember.images()['profiles'][0]['file_path']})
 
-def getPopular():
-    # Not working for some reason?
-    popular = requests.get('https://api.themoviedb.org/3/discover/tv?api_key={}&sort_by=popularity.desc'.format(tmdb.API_KEY)).json()['results'][0]
-    return popular
+def getPopular(n):
+    if n == 1:
+        popular = requests.get('https://api.themoviedb.org/3/discover/tv?api_key={}&sort_by=popularity.desc'.format(tmdb.API_KEY)).json()['results'][0]
+        return popular
+    else:
+        popularList = []
+        for i in range(n):
+            popularList.append(requests.get('https://api.themoviedb.org/3/discover/tv?api_key={}&sort_by=popularity.desc'.format(tmdb.API_KEY)).json()['results'][i])
+        return popularList
 
 def getShowPage(showName):
     try:

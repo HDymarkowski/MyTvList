@@ -6,182 +6,26 @@
 {% endblock %}
 
 {% block section_block %}
+{% if popular %}
+
 <article>
-		<div class="countdown entry">
-			<!-- this section displays a top show entry -->
-			<img src="thumbnail.jpg" alt="thumbnail">
-			<h3>
-				number
-			</h3>
-			<h2>
-				show title
-			</h2>
-			<p1>
-				description
-			</p1>
-		</div>
 	<table>
 		<tr>
-			<th>
-			<div class="countdownEntry10">
-				<!-- this section displays a top show entry -->
-				<img src="thumbnail.jpg" alt="thumbnail">
-				<h3>
-					number
-				</h3>
-				<h2>
-					show title
-				</h2>
-				<p1>
-					description
-				</p1>
-			</div>
-			</th>
-			<th>
-				<div class="countdownEntry9">
-					<!-- this section displays a top show entry -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						number
-					</h3>
-					<h2>
-						show title
-					</h2>
-					<p1>
-						description
-					</p1>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-			<div class="countdownEntry8">
-				<!-- this section displays a top show entry -->
-				<img src="thumbnail.jpg" alt="thumbnail">
-				<h3>
-					number
-				</h3>
-				<h2>
-					show title
-				</h2>
-				<p1>
-					description
-				</p1>
-			</div>
-			</th>
-			<th>
-				<div class="countdownEntry7">
-					<!-- this section displays a top show entry -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						number
-					</h3>
-					<h2>
-						show title
-					</h2>
-					<p1>
-						description
-					</p1>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-			<div class="countdownEntry6">
-				<!-- this section displays a top show entry -->
-				<img src="thumbnail.jpg" alt="thumbnail">
-				<h3>
-					number
-				</h3>
-				<h2>
-					show title
-				</h2>
-				<p1>
-					description
-				</p1>
-			</div>
-			</th>
-			<th>
-				<div class="countdownEntry5">
-					<!-- this section displays a top show entry -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						number
-					</h3>
-					<h2>
-						show title
-					</h2>
-					<p1>
-						description
-					</p1>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-			<div class="countdownEntry4">
-				<!-- this section displays a top show entry -->
-				<img src="thumbnail.jpg" alt="thumbnail">
-				<h3>
-					number
-				</h3>
-				<h2>
-					show title
-				</h2>
-				<p1>
-					description
-				</p1>
-			</div>
-			</th>
-			<th>
-				<div class="countdownEntry3">
-					<!-- this section displays a top show entry -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						number
-					</h3>
-					<h2>
-						show title
-					</h2>
-					<p1>
-						description
-					</p1>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-			<div class="countdownEntry2">
-				<!-- this section displays a top show entry -->
-				<img src="thumbnail.jpg" alt="thumbnail">
-				<h3>
-					number
-				</h3>
-				<h2>
-					show title
-				</h2>
-				<p1>
-					description
-				</p1>
-			</div>
-			</th>
-			<th>
-				<div class="countdownEntry1">
-					<!-- this section displays a top show entry -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						number
-					</h3>
-					<h2>
-						show title
-					</h2>
-					<p1>
-						description
-					</p1>
-				</div>
-			</th>
-		</tr>
+	{% for pop in popular %}
+	<th>
+	<div class = "popularShow">
+		<h2>
+			{{ pop.name }}
+		</h2>
+		<img src = "{{ MEDIA_URL }}{{ pop.imgFile }}", width = 200px, height = 300px>
+		<p> {{ pop.overview }}</p>
+	</div>
+	</th>
+	{% endfor %}
+	</tr>
 	</table>
-	
 </article>
+{% else %}
+<p>no top shows available for display</p>
+{% endif %}
 {% endblock %}

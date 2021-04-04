@@ -15,7 +15,7 @@ def index(request):
     # TODO add like if user logged in show reccomendations or else don't
     # TODO make getPopular to work somehow?
     context_dict = {}
-    context_dict['popular'] = tmdbSimpleApi.getPopular()
+    context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
     UserFavouriteShow = UserProfile.favourite_Show_Name
     context_dict['recs'] = tmdbSimpleApi.getRecommendations("Lost", 3)
@@ -97,6 +97,12 @@ def topshows(request):
 
     context_dict = {}
 
+    context_dict['popular'] = tmdbSimpleApi.getPopular(6)
+
+    for pop in context_dict['popular']:
+        pop['imgFile'] = tmdbSimpleApi.img(pop['poster_path'])
+
+    print(context_dict)
     response = render(request, 'TopShows.html', context=context_dict)
 
     return response
