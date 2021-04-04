@@ -3,44 +3,96 @@
 
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static "css/base.css" %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="UTF-8">
     <title>
         {% block title_block %}
         {% endblock %}
     </title>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".default").click(function(){
+                $(".dropdown ul").toggleClass("active")
+            });
+             $(".dropdown ul li").click(function(){
+                var text = $(this).text();
+                $(".default").text(text);
+                $(".dropdown ul").removeClass("active");
+             })
+        });
+    </script>
 </head>
 <body>
-    <header>
+    <header class="MyTvListHeader">
         <!-- header appears at the top of the page -->
             <!-- image of the logo of the site followed by the title -->
-            <img src="logo.jpg" alt="logo">
-            <h1>MyTV List</h1>
-
+        <div class="Logo">
+            <a id="home_img_holder" href="/" aria-label="Home">
+                <svg id="home_img" class="logo" xmlns="http://www.w3.org/2000/svg" width="90" height="50" viewBox="0 0 90 50" version="1.1">
+                    <g fill="#f5C518">
+                        <rect x="0" y="0" width="100%" height="100%" rx="4"></rect>
+                    </g>
+                    <g transform="translate(9.000000, 9.000000)" fill="#000000" fill-rule="nonzero">
+                        <path d="M 0 0 h 5 l 3 8.48 l 3 -8.48 h 5 v 30 h -5 v -15 l -3 8.48 l -3 -8.48 v 15 h -5 Z"/>
+                        <path d="M 16 15 h 3.5 l 2.5 6 l 2.5 -6 h 3.5 l -8.5 21 H 16 v -6 h 3.5 l 1 -2.76"/>
+                        <path d="M 25 0 h 14 v 8.48 h -5 V 30 h -4 V 8.48 h -5 Z"/>
+                        <path d="M 34 15 h 3.5 l 2.5 6 l 2.5 -6 h 3.5 l -6 15 Z"/>
+                        <path d="M 49 0 h 4 v 24 h 5 v 6 h -9 Z"/>
+                        <path d="M 58 30 v -15 h 3.5 v 15 Z"/>
+                        <circle cx="59.75" cy="9.4" r="3"/>
+                        <path d="M 69 19.2 A 3 3 0 1 0 66 22 A 3 3 0 1 1 63 24" stroke-width="3" fill="none" stroke="black" />
+                        <path d="M 71.5 26 v -6 h -2 v -4 h 2 v -5.4 h 2 v 5.4 h 2 v 4 h -2 C 73.5 24 73 26.5 76.5 27 v 3 h -2 C 71.5 30 71.5 28 71.5 26"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <nav>
             <!-- nav bar with links to each major page in the site -->
-            <center>
-                <a href="{% url 'MyTvList:index' %}">homepage</a>
-                <a href="{% url 'MyTvList:topshows' %}">top shows</a>
-                <a href="{% url 'MyTvList:recommended' %}">Recommended for you</a>
-                <a href="{% url 'MyTvList:add_show' %}">add a show</a></center>
+            <ul class="nav_links">
+
+                <li><a href="{% url 'MyTvList:index' %}">Homepage</a></li>
+                <li><a href="{% url 'MyTvList:topshows' %}">Top shows</a></li>
+                <li><a href="{% url 'MyTvList:recommended' %}">Recommended for you</a></li>
+                <li><a href="{% url 'MyTvList:add_show' %}">Add a show</a></li>
+                <li>
+                    <div class="search_container">
+                        <div class="search_box">
+                            <div class="dropdown">
+                                <div class="default">
+                                    All                                    
+                                </div>
+                                <ul>
+                                    <li>Movies</li> 
+                                    <li>Shows</li>
+                                    <li>Users</li>
+                                </ul>
+                            </div>
+                            <div class="search_field">
+                                <input type="text" class="input" placeholder="Search">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
 
             <!-- profile pic -->
-            <img src="ProfilePic.jpg" alt="profile pic" style="float:right;">
+            <!--<img src="ProfilePic.jpg" alt="profile pic">-->
 
             <!-- search bar leads to results page -->
-            <div class="searchBar" style="float:right;">
-                <form action="search">
-                    <input type="text" placeholder="Search shows/users" name="search">
-                    <button type="submit"><i class="enterSearch">Submit</i></button>
-                </form>
-            </div>
-
+           
             <!-- link for users to log in -->
-            <br><br>
+        <div class="user_button">
             {% if user.is_authenticated %}
-                <a href="{% url 'MyTvList:logout' %}" style="float:right;">logout</a>
+                <a href="{% url 'MyTvList:logout' %}"><button>Log Out</button></a>
             {% else %}
-                <a href="{% url 'MyTvList:login' %}" style="float:right;">login</a>
+                <a href="{% url 'MyTvList:login' %}"><button>Log In</button></a>
             {% endif %}
+        </div>
     </header>
 
     <section>
