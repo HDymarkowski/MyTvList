@@ -9,128 +9,40 @@
 <article>
 	<div class="Show">
 		<!-- this section displays info about the show -->
-		<iframe src="https://youtube.com/embed/"></iframe>
 		<h2>
-			show title
+			{{ title }}
 		</h2>
-		<div Class="ratings">
-			<img src="rating1.jpg">
-			<img src="rating2.jpg">
-			<img src="rating3.jpg">
-			<img src="rating4.jpg">
-			<img src="rating5.jpg">
+		<img src = "{{ MEDIA_URL}}{{ imgFile }}", width = 200px, height = 300px>
+
+		{{ rating }}
 		</div>
 		<p1>
-			description
+			{{ description }}
 		</p1>
 	</div>
-	<div Class="reviews">
-		<table>
-		<tr>
-			<th>
-				<div Class="review">
-					<!-- this section displays an entry for the review list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						Username
-					</h3>
-					<div Class="ratings">
-						<img src="rating1.jpg">
-						<img src="rating2.jpg">
-						<img src="rating3.jpg">
-						<img src="rating4.jpg">
-						<img src="rating5.jpg">
-					</div>
-					<p>
-						review
-					</p>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-				<div Class="review">
-					<!-- this section displays an entry for the review list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						Username
-					</h3>
-					<div Class="ratings">
-						<img src="rating1.jpg">
-						<img src="rating2.jpg">
-						<img src="rating3.jpg">
-						<img src="rating4.jpg">
-						<img src="rating5.jpg">
-					</div>
-					<p>
-						review
-					</p>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-				<div Class="review">
-					<!-- this section displays an entry for the review list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						Username
-					</h3>
-					<div Class="ratings">
-						<img src="rating1.jpg">
-						<img src="rating2.jpg">
-						<img src="rating3.jpg">
-						<img src="rating4.jpg">
-						<img src="rating5.jpg">
-					</div>
-					<p>
-						review
-					</p>
-				</div>
-			</th>
-		</tr>
-	</table>
-	</div>
+<!-- Removed reviews for the time being -->
+	
 </article>
-
+{% if cast %}
 <aside>
 	<h2>
 		Cast
 	</h2>
 	<table>
 		<tr>
+			{% for castMember in cast %}
 			<th>
 				<div Class="castMember">
 					<!-- this section displays an entry for the cast list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						cast name
-					</h3>
+					<img src="{{ MEDIA_URL }}{{ castMember.imgFile }}" alt="thumbnail", width = 200px, height = 300px>
+					<h4>
+						{{ castMember.name }} as {{ castMember.character }}
+					</h4>
 				</div>
 			</th>
-		</tr>
-		<tr>
-			<th>
-				<div Class="castMember">
-					<!-- this section displays an entry for the cast list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						cast name
-					</h3>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th>
-				<div Class="castMember">
-					<!-- this section displays an entry for the cast list -->
-					<img src="Thumbnail.jpg" alt="thumbnail">
-					<h3>
-						cast name
-					</h3>
-				</div>
-			</th>
+			{% endfor %}
 		</tr>
 	</table>
 </aside>
+{% endif %}
 {% endblock %}

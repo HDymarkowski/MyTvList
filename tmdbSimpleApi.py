@@ -134,6 +134,26 @@ def getPopular():
     popular = requests.get('https://api.themoviedb.org/3/discover/tv?api_key={}&sort_by=popularity.desc'.format(tmdb.API_KEY)).json()['results'][0]
     return popular
 
+def getShowPage(showName):
+    try:
+        showId = getId(showName)
+        show = tmdb.TV(showId)
+        showInfo = show.info()
+        showImages = show.images()
+        castList = []
+        showCast = show.credits()['cast']
+
+
+        for i in range(3):
+            curCast = showCast[i]
+            castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
+
+
+        return {'title' : showInfo['name'], 'description' : showInfo['overview'], 'poster_path' : showImages['posters'][0]['file_path'], 'cast' : castList}
+    except HTTPError as e:
+        return None
+
+getShowPage("The sopranos")
 
 #print(getShow("The Sopranos"))
 # TODO Cast, images, videos?
@@ -166,4 +186,4 @@ def img(file_path):
         w.write(r.content)
     return filename
 
-print(getRecommendations("The Sopranos", 3))
+#print(getShowPage("The Sopranos"))

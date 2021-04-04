@@ -125,3 +125,16 @@ def castPage(request):
     response = render(request, 'castPage.html',context=context_dict)
 
     return response
+
+def showPage(request):
+
+    #context_dict = tmdbSimpleApi.getShowPage(show)
+    context_dict = tmdbSimpleApi.getShowPage("Twin Peaks")
+
+    context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
+
+    for castMember in context_dict['cast']:
+        castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
+
+    response = render(request, 'showPage.html',context=context_dict)
+    return response
