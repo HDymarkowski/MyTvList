@@ -16,6 +16,7 @@ def index(request):
     # TODO make getPopular to work somehow?
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular()
+    context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
     UserFavouriteShow = UserProfile.favourite_Show_Name
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
 

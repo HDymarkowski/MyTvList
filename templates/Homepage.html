@@ -11,7 +11,7 @@
 	<div class="topShow">
 		<!-- this section displays the top rated show -->
 		<!-- I replaced the youtube video with an image here-->
-		<img src = "{{ popular.image }}">
+		<img src = "{{ MEDIA_URL }}{{ popular.imgFile }}", width = 200px, height = 300px>
 		<h2>
 			{{ popular.name }}
 		</h2>

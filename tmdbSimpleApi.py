@@ -4,6 +4,7 @@ from requests.models import HTTPError
 import tmdbsimple as tmdb
 import requests
 from tmdbsimple import search
+import tmdbsimple
 from tmdbsimple.tv import TV
 
 tmdb.API_KEY = 'a2b67da805cffb9ba951a0f56da1e603'
@@ -130,7 +131,8 @@ def getCastMemberPage(member):
 
 def getPopular():
     # Not working for some reason?
-    return TV.popular
+    popular = requests.get('https://api.themoviedb.org/3/discover/tv?api_key={}&sort_by=popularity.desc'.format(tmdb.API_KEY)).json()['results'][0]
+    return popular
 
 
 #print(getShow("The Sopranos"))
@@ -164,5 +166,3 @@ def img(file_path):
         w.write(r.content)
     return filename
 
-
-#print(tmdb.tv(1).info())
