@@ -4,8 +4,9 @@
 {% block title_block %}
 	Recommended
 {% endblock %}
-{% if user.is_authenticated %}
 {% block section_block %}
+{% if user.is_authenticated %}
+
 
 	{% if recs %}
 	<table>
@@ -29,8 +30,9 @@
 		</tr>
 	</table>
 	{% else %}
-	<p>No Reccomendations for you user</p>
+	<p>No reccomendations for you user.</p>
 	{% endif %}
+
 {% else %}
 	<p>Log In or Register to see recommendations</p>
 {% endif %}

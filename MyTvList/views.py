@@ -113,6 +113,10 @@ def castPage(request):
 
     #context_dict = tmdbSimpleApi.getCastMemberPage(tmdbSimpleApi.getIdPerson(castMember))
     context_dict = tmdbSimpleApi.getCastMemberPage(tmdbSimpleApi.getIdPerson("James Gandolfini"))
+    context_dict['imgFile'] =tmdbSimpleApi.img(context_dict['image'])
+
+    for cred in context_dict['credits']:
+        cred['imgFile'] = tmdbSimpleApi.img(cred['image'])
     response = render(request, 'castPage.html',context=context_dict)
 
     return response

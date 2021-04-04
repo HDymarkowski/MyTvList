@@ -20,6 +20,8 @@ def getId(show):
         # Maybe deal with this better
         # ALT-OUTPUT empty list
         return None
+    except IndexError as e:
+        return None
 
 def getIdPerson(person):
     try:
@@ -28,8 +30,6 @@ def getIdPerson(person):
         return personId
     except HTTPError as e:
         # Maybe deal with this better
-        print("Show does not exist")
-        print("({})".format(e))
         # ALT-OUTPUT empty list
         return None
 
@@ -86,8 +86,6 @@ def getShow(show):
         return resultsList
 
     except HTTPError as e:
-        print("Show does not exist")
-        print("({})".format(e))
         # ALT-OUTPUT empty list
         return None
 
@@ -116,8 +114,6 @@ def getCast(show):
         return castList 
 
     except HTTPError as e:
-            print("Show does not exist")
-            print("({})".format(e))
             # ALT-OUTPUT empty list
             return None
 
@@ -136,12 +132,37 @@ def getPopular():
     # Not working for some reason?
     return TV.popular
 
-"""
-img = Image.open("http://image.tmdb.org/tv" + tmdb.TV.images(tmdb.TV(1))['posters'][0]['file_path'])
-img.show
-"""
 
 #print(getShow("The Sopranos"))
 # TODO Cast, images, videos?
 # TODO Cleaning up and error handling
 # Videos might be a bit janky, maybe just poster instead?
+
+# IMAGES DOWN HERE
+def size_str_to_int(x):
+    return float("inf") if x == 'original' else int(x[1:])
+
+def img(file_path):
+    print("FP = " +file_path)
+    # Currently downloads one image and returns the filename
+    CONFIG_PATTERN = 'http://api.themoviedb.org/3/configuration?api_key={key}'
+
+    url = CONFIG_PATTERN.format(key=tmdb.API_KEY)
+    r = requests.get(url)
+    config = r.json()
+    base_url = config['images']['base_url']
+    sizes = config['images']['poster_sizes']
+
+    max_size = max(sizes, key=size_str_to_int)
+    url = "{0}{1}{2}".format(base_url, max_size, file_path)
+
+    r = requests.get(url)
+    filetype = r.headers['content-type'].split('/')[-1]
+    #filename = 'poster_{0}.{1}'.format(file_path,filetype)
+    filename = '{}'.format(file_path.replace('/',''))
+    with open("media/" + filename,'wb') as w:
+        w.write(r.content)
+    return filename
+
+
+#print(tmdb.tv(1).info())

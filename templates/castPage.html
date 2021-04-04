@@ -11,14 +11,14 @@
 <!-- displays information about crew member -->
 	
 	<!-- only appears when the user is logged into the displayed account -->
-	<img src="{ {member.image }}" alt="profile pic">
+	<img src="{{ MEDIA_URL }}{{ imgFile }}" alt="profile pic">
 	
 	<h2>
-		{{ member.name }}
+		{{ name }}
 	</h2>
 	
 	<p>
-		Birthday: {{ member.birthday }}
+		Birthday: {{ birthday }}
 	</p>
 </aside>
 
@@ -33,7 +33,7 @@
 			<th>
 				<div Class="isIn">
 					<!-- this section displays an entry for the show -->
-					<img src="{{ credit.image }}" alt="thumbnail">
+					<img src="{{ MEDIA_URL }}{{ credit.imgFile }}" alt="thumbnail">
 					<h3>
 						{{ credit.name}}
 					</h3>
