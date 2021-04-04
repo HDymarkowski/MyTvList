@@ -6,70 +6,49 @@
 {% endblock %}
 
 {% block section_block %}
-<article>
-	<h2>
-		appears in
-	</h2>
-	
-	<table>
-		<tr>
-			<th>
-				<div Class="isIn">
-					<!-- this section displays an entry for the show -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						Show title
-					</h3>
-					<div Class="Rating">
-						<img src="rating1.jpg">
-						<img src="rating2.jpg">
-						<img src="rating3.jpg">
-						<img src="rating4.jpg">
-						<img src="rating5.jpg">
-					</div>
-
-					<p>
-						description
-					</p>
-				</div>
-			</th>
-			<th>
-				<div Class="isIn">
-					<!-- this section displays an entry for the show -->
-					<img src="thumbnail.jpg" alt="thumbnail">
-					<h3>
-						Show title
-					</h3>
-					<div Class="Rating">
-						<img src="rating1.jpg">
-						<img src="rating2.jpg">
-						<img src="rating3.jpg">
-						<img src="rating4.jpg">
-						<img src="rating5.jpg">
-					</div>
-
-					<p>
-						description
-					</p>
-				</div>
-			</th>
-		</tr>
-	</table>
-</article>
-
+<section>
 <aside>
 <!-- displays information about crew member -->
 	
 	<!-- only appears when the user is logged into the displayed account -->
-	<img src="profilepic.html" alt="profile pic">
+	<img src="{ {member.image }}" alt="profile pic">
 	
 	<h2>
-		name
+		{{ member.name }}
 	</h2>
 	
 	<p>
-		about
+		Birthday: {{ member.birthday }}
 	</p>
 </aside>
+
+<article>
+	<h2>
+		appears in
+	</h2>
+
+	<table>
+		<tr>
+		{% for credit in credits %}
+			<th>
+				<div Class="isIn">
+					<!-- this section displays an entry for the show -->
+					<img src="{{ credit.image }}" alt="thumbnail">
+					<h3>
+						{{ credit.name}}
+					</h3>
+					<div Class="Rating">
+						{{ credit.rating }}
+					</div>
+
+					<p>
+						{{ credit.description }}
+					</p>
+				</div>
+			</th>
+		{% endfor %}
+		</tr>
+	</table>
+</article>
 </section>
 {% endblock %}

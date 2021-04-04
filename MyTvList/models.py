@@ -1,7 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
-
+import tmdbSimpleApi
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -9,7 +9,7 @@ class UserProfile(models.Model):
 
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    # Favourite show will be stored by it's tmdb code number
+    favourite_Show_Name = models.CharField(max_length=1000, blank=True)
     # favouriteShow = models.IntegerField()
 
     def __str__(self):

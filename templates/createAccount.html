@@ -6,18 +6,26 @@
 {% endblock %}
 
 {% block section_block %}
-<form action="login">
+<<<<<<< HEAD
+=======
+<form id="user_form" method="post" action="{% url 'MyTvList:createAccount' %}" enctype="multipart/form-data">
+>>>>>>> a6272978944768fb602df47fc273e03e4969b9d1
 	<h2>
 		Create an Account
 	</h2>
-	<p>please enter a username:</p>
-		<input type="text" placeholder="username">
-	<p>please enter a password:</p>
-		<input type="password" placeholder="password">
-	<p>please re-enter password:</p>
-		<input type="password" placeholder="re-enter password">
-	<br>
-	<input type="submit">
+<form id="user_form" method="post" action="{% url 'MyTvList:createAccount' %}" 
+	  enctype="multipart/form-data">
+
+	{% csrf_token %}
+
+	<!--Display each form-->
+
+	{{ user_form.as_p }}
+	{{ profile_form.as_p }}
+	
+	<!--Provide a button to click to submit the form.-->
+	<input type="submit" name="submit" value = "createAccount" />
+	
 </form>
 
 {% endblock %}
