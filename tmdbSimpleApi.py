@@ -166,3 +166,4 @@ def img(file_path):
         w.write(r.content)
     return filename
 
+print(getRecommendations("The Sopranos", 3))

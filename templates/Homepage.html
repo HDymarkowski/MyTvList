@@ -29,22 +29,23 @@
 		recommended for you
 	</h2>
 	<table>
-		{% for rec in recs %}
 		<tr>
+			{% for rec in recs %}
 			<th>
 			<div Class="recommendedShow">
 				<!-- this section displays an entry for the recommended shows list -->
-				<img src="{{ rec.poster_path }}" alt="thumbnail">
+				<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 200px, height = 300px>
 				<h3>
 					{{ rec.title }}
 				</h3>
+				<p>{{ rec.tagline }}</p>
 				<div Class="ratings">
 					{{ rec.rating }}
 				</div>
 			</div>
 		</th>
-		</tr>
 		{% endfor %}
+		</tr>
 	</table>
 	
 	<!-- link leads to the recommended page -->

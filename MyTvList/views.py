@@ -18,8 +18,12 @@ def index(request):
     context_dict['popular'] = tmdbSimpleApi.getPopular()
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
     UserFavouriteShow = UserProfile.favourite_Show_Name
-    context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
+    context_dict['recs'] = tmdbSimpleApi.getRecommendations("Lost", 3)
 
+    for rec in context_dict['recs']:
+        rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
+
+    print(context_dict)
 
     response = render(request, 'Homepage.html', context=context_dict)
 
