@@ -1,4 +1,4 @@
-from MyTvList.models import UserProfile
+from MyTvList.models import UserProfile, User
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -110,8 +110,14 @@ def topshows(request):
 def recommended(request):
 
     context_dict = {}
+    user_list = UserProfile.objects.all()
 
-    UserFavouriteShow = UserProfile.favourite_Show_Name
+    Username = request.user
+    userobject = User.objects.get(id = Username.id)
+
+    profile = UserProfile.objects.get(pk = Username.id)
+    context_dict['favshow'] = profile.favourite_Show_Name
+    UserFavouriteShow = profile.favourite_Show_Name
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 

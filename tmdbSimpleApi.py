@@ -41,6 +41,7 @@ def getRecommendations(show, n):
     # List of dictionaries containing 'title', 'tagline' and 'poster_path'
     try:
         recs = []
+
         showId = getId(show)
         #showId = show
 

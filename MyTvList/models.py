@@ -7,10 +7,19 @@ import tmdbSimpleApi
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
     favourite_Show_Name = models.CharField(max_length=1000, blank=True)
-    # favouriteShow = models.IntegerField()
+    favouriteShow = models.IntegerField(default = None)
+    
+
+    watchlist = [favouriteShow,]
+    
+
+    def getFavouriteShow(self):
+        return self.favouriteShow
 
     def __str__(self):
         return self.user.username
+
+    def add_watchlist(show):
+        watchlist.append(tmdbSimpleApi.getId(favourite_Show_Name))

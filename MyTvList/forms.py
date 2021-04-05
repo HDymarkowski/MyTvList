@@ -24,14 +24,11 @@ class UserForm(forms.ModelForm):
         return cleaned_data
 
 class UserProfileForm(forms.ModelForm):
-
-    #favouriteShow = tmdbSimpleApi.getId(favourite_Show_Name)
-    #if favouriteShow == None:
-        #self.add_error('favourite_Show_Name', 'Can not find show')
+    favouriteShow = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
         model = UserProfile
-        fields = ('website', 'picture', 'favourite_Show_Name',)
+        fields = ('picture', 'favourite_Show_Name', 'favouriteShow',)
 
     
     def clean(self):
