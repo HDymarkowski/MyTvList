@@ -6,9 +6,7 @@ searchBox.onkeyup =(e)=>{
 	let userInput = e.target.value;
 	let emptyArray = [];
 	if(userInput){
-		emptyArray = getSuggestions(userInput).filter((data)=>{
-			return data.toLowerCase().startsWith(userInput.toLocaleLowerCase());
-		});
+		emptyArray = getSuggestions(userInput);
 		emptyArray = emptyArray.map((data)=>{
 			return data = '<li>'+ data + '</li>';
 		});
@@ -26,8 +24,8 @@ searchBox.onkeyup =(e)=>{
 
 function select(element){
 	let selectUserInput = element.textContent;
+	console.log(selectUserInput);
 	inputBox.value = selectUserInput;
-	console.log(inputBox.value);
 	searchBox.classList.remove("active");
 }
 
@@ -53,7 +51,10 @@ function getSuggestions(userInput){
 	    jsonData = json;
 	  }
 	});
-	for (var i = 0; i < 5; i++) {
+	if (!jsonData) {
+		return jsonNamesData;
+	}
+	for (var i = 0; i < 5 && i < jsonData.results.length; i++) {
 		jsonNamesData.push(jsonData.results[i].name);
 	}
 	return jsonNamesData;

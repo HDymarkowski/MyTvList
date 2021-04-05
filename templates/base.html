@@ -67,31 +67,30 @@
                                     Shows                                    
                                 </div>
                                 <ul>
-                                    <li>?????</li> 
+                                    <li>Users</li> 
                                     <li>Shows</li>
                                     <li>?????</li>
                                 </ul>
                             </div>
                             <div class="search_field">
-                                
-                                    <input type="text" class="input" placeholder="Search">
+                                <form method=POST action="{% url 'MyTvList:showPage' %}" autocomplete="off">
+                                    <input type="search" class="input" placeholder="Search" aria-label="Search" name="search_input">
                                     <div class="autocom_box">
                                         <ul>
                                             
                                         </ul>
-
                                     </div>
                                     <div>
                                         <button><i class="fas fa-search"></i></button>
                                     </div>
-                                
-                                
+                                    {% csrf_token %}
+                                </form>                                
                             </div>
                         </div>
                     </div>
                 </li>
             </ul>
-        <script src="static/js/script.js"></script>
+        <script src="{% static "js/script.js" %}"></script>
         </nav>
 
             <!-- profile pic -->
