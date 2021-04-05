@@ -37,14 +37,15 @@
 		<p>Now write a review.</p><br>
 		<input type="text" id="review" name="review">
 		<input type="submit">
-	</form>	
-		
-	<div class="Reviews">
-		{{ Review.user}}
-		{{ Review.rating}}
-		{{ Review.Review}}	
-	</div>
-	
+	</form>
+
+	{% for reviews in Reviews %}
+		<div class="userReviews">
+			{{ Review.user}}
+			{{ Review.rating}}
+			{{ Review.Review}}
+		</div>
+	{% end for %}
 </article>
 {% if cast %}
 <aside>
