@@ -11,4 +11,5 @@ urlpatterns = [
     path('recommended/', views.recommended, name='recommended'),
     path('castPage/', views.castPage, name='castPage'),
     path('showPage/', views.showPage, name='showPage'),
+    path('watchListPage/', views.watchListPage, name='watchListPage'),
 ]

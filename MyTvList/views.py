@@ -17,11 +17,14 @@ def index(request):
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
-
+    """
     Username = request.user
     if Username.is_authenticated:
-
+ 
+  
         profile = UserProfile.objects.get(pk = Username.id)
+
+
         UserFavouriteShow = profile.favourite_Show_Name
 
         context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
@@ -29,7 +32,7 @@ def index(request):
 
         for rec in context_dict['recs']:
             rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
-
+"""
     #print(context_dict)
 
     response = render(request, 'Homepage.html', context=context_dict)
@@ -181,11 +184,14 @@ def showPage(request):
     return response
 
 def watchListPage(request):
-    watchList = []
-    context_dict = []
-    for show in watchList:
-        context_dict['shows'].append(tmdbSimpleApi.getWatchListShow(show))
-        context_dict['shows'][show]['imgFile'] = tmdbSimpleApi.img(show['image'])
+    #watchList = []
+    watchList = [33, 44]
+    context_dict = {}
 
-    response = render(request, 'watchList.html',context=context_dict)  
+    context_dict['shows'] = tmdbSimpleApi.getWatchListShows(watchList)
+    for show in context_dict['shows']:
+        show['imgFile'] = tmdbSimpleApi.img(show['poster_path'])
+
+    response = render(request, 'watchList.html',context=context_dict)
+    return response  
     
