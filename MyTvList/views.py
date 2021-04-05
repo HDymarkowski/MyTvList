@@ -17,8 +17,14 @@ def index(request):
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
-    UserFavouriteShow = UserProfile.favourite_Show_Name
-    context_dict['recs'] = tmdbSimpleApi.getRecommendations("Lost", 3)
+
+    Username = request.user
+
+    profile = UserProfile.objects.get(pk = Username.id)
+    UserFavouriteShow = profile.favourite_Show_Name
+
+    context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
+
 
     for rec in context_dict['recs']:
         rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
@@ -110,8 +116,11 @@ def topshows(request):
 def recommended(request):
 
     context_dict = {}
+    Username = request.user
 
-    UserFavouriteShow = UserProfile.favourite_Show_Name
+    profile = UserProfile.objects.get(pk = Username.id)
+    UserFavouriteShow = profile.favourite_Show_Name
+    context_dict['favouriteShow'] = UserFavouriteShow
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
