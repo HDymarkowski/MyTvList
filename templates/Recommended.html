@@ -6,8 +6,7 @@
 {% endblock %}
 {% block section_block %}
 {% if user.is_authenticated %}
-
-	<p> {{ favshow }} </p>
+	<p> Since your favourite show is {{ favouriteShow }} we recommend: </p>
 	{% if recs %}
 	<table>
 		<tr>

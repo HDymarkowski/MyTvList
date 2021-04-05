@@ -114,10 +114,11 @@ def recommended(request):
 
     Username = request.user
     userobject = User.objects.get(id = Username.id)
-
+    
     profile = UserProfile.objects.get(pk = Username.id)
-    context_dict['favshow'] = profile.favourite_Show_Name
+
     UserFavouriteShow = profile.favourite_Show_Name
+    context_dict['favouriteShow'] = UserFavouriteShow
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
