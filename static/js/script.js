@@ -75,17 +75,14 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-const csrftoken = getCookie('csrftoken');
 
 $(document).ready(function(){
 	$('.clickable').click(function(){
 		$.post( "/MyTvList/showPage/", 
-         { csrfmiddlewaretoken: csrftoken, name: $(this).attr('name')
+         { csrfmiddlewaretoken: getCookie('csrftoken'), name: $(this).attr('name')
          }, 
          function(data) {
              window.open("/MyTvList/showPage/");
         });
-		
 	});
 });
-

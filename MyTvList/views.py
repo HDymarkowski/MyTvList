@@ -152,13 +152,6 @@ def castPage(request):
 global var
 def showPage(request):
     global var
-    postList = (request.POST.getlist('name'))
-    if postList:
-        var = postList
-    else:
-        postList = var
-    print(var)
-    print(postList)
     if request.method == "POST":
         if 'search_input' in request.POST:
             search_input = request.POST['search_input']
@@ -172,7 +165,11 @@ def showPage(request):
 
             response = render(request, 'showPage.html',context=context_dict)
             return response
-       
+    postList = (request.POST.getlist('name'))
+    if postList:
+        var = postList
+    else:
+        postList = var
     context_dict = tmdbSimpleApi.getShowPage(postList)
 
     context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
