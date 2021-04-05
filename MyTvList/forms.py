@@ -42,7 +42,7 @@ class UserProfileForm(forms.ModelForm):
 
         return cleaned_data
     
-    class ReviewForm(forms.ModelForm):
+class ReviewForm(forms.ModelForm):
     ratingInput = forms.IntegerField(widget=forms.HiddenInput(), initial=1)
     ReviewInput = forms.CharField(widget=forms.HiddenInput(), initial="")
     
