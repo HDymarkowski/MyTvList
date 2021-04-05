@@ -139,10 +139,10 @@ def castPage(request):
 
     return response
 
-def showPage(request):
-
+def showPage(request, show_name):
+    print(show_name)
     #context_dict = tmdbSimpleApi.getShowPage(show)
-    context_dict = tmdbSimpleApi.getShowPage("Twin Peaks")
+    context_dict = tmdbSimpleApi.getShowPage(show_name)
 
     context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
 

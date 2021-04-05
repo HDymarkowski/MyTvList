@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('MyTvList/', include('MyTvList.urls')),
     path('admin/', admin.site.urls),
+    path('myTvList/showPage/<slug:show_name>/', views.showPage, name ='showPage')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
