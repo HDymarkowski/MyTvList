@@ -9,9 +9,10 @@
 	<p> Since your favourite show is {{ favouriteShow }} we recommend: </p> </br>
 	{% if recs %}
 	<table>
-		<tr>
+		<tr id="idk">
 			{% for rec in recs %}
-			<th>
+			<th name="{{rec.title}}" class="clickable">
+				{% csrf_token %}
 				<div Class="recommendedShow">
 					<!-- this section displays an entry for the recommended shows list -->
 					<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 150px, height = 250px>
