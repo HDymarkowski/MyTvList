@@ -22,30 +22,39 @@
 	</div>
 	
 
-	<form action="addReview">
-		<p>Please give a rating.</p><br>
-		<input type="radio" id="1" name="Rating" value="1">
-			<label for="1">1</label>
-		<input type="radio" id="2" name="Rating" value="2">
-			<label for="2">2</label>
-		<input type="radio" id="3" name="Rating" value="3">
-			<label for="3">3</label>
-		<input type="radio" id="4" name="Rating" value="4">
-			<label for="4">4</label>
-		<input type="radio" id="5" name="Rating" value="5">
-			<label for="5">5</label><br>
-		<p>Now write a review.</p><br>
-		<input type="text" id="review" name="review">
-		<input type="submit">
+	<form id="ReviewForm" method="post" action="{% url 'MyTvList:ShowPage' %}" 
+		  enctype="multipart/form-data">
+
+		{% csrf_token %}
+
+		<!--Display each form-->
+
+		{{ Review.as_p }}
+
+		<!--Provide a button to click to submit the form.-->
+		<input type="submit" name="submit" value = "Add Review" />
+
 	</form>
 
-	{% for reviews in Reviews %}
-		<div class="userReviews">
-			{{ Review.user}}
-			{{ Review.rating}}
-			{{ Review.Review}}
-		</div>
-	{% endfor %}
+	<table>
+		<tr>
+		{% for review in Review %}
+			<th>
+			<div class = "UserReview">
+				<h2>
+					{{ Review.username }}
+				</h2>
+				<h2>
+					{{ Review.Rating }}
+				</h2>
+				<p> {{ Review.review }}</p>
+			</div>
+			</th>
+		{% endfor %}
+		</tr>
+	</table>
+
+
 </article>
 {% if cast %}
 <aside>
