@@ -6,7 +6,7 @@
 {% endblock %}
 {% block section_block %}
 {% if user.is_authenticated %}
-	<p> Since your favourite show is {{ favouriteShow }} we recommend: </p>
+	<p> Since your favourite show is {{ favouriteShow }} we recommend: </p> </br>
 	{% if recs %}
 	<table>
 		<tr>
@@ -14,7 +14,7 @@
 			<th>
 				<div Class="recommendedShow">
 					<!-- this section displays an entry for the recommended shows list -->
-					<img src="{{ rec.poster_path }}" alt="thumbnail">
+					<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 150px, height = 250px>
 					<h3>
 						{{ rec.title }}
 					</h3>

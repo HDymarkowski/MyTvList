@@ -124,6 +124,10 @@ def recommended(request):
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
+    for rec in context_dict['recs']:
+        rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
+
+
     response = render(request, 'Recommended.html', context=context_dict)
 
     return response
