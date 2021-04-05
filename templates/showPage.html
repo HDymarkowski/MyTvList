@@ -20,8 +20,32 @@
 			{{ description }}
 		</p1>
 	</div>
-<!-- Removed reviews for the time being -->
 	
+
+	<form action="addReview">
+		<p>Please give a rating.</p><br>
+		<input type="radio" id="1" name="Rating" value="1">
+			<label for="1">1</label>
+		<input type="radio" id="2" name="Rating" value="2">
+			<label for="2">2</label>
+		<input type="radio" id="3" name="Rating" value="3">
+			<label for="3">3</label>
+		<input type="radio" id="4" name="Rating" value="4">
+			<label for="4">4</label>
+		<input type="radio" id="5" name="Rating" value="5">
+			<label for="5">5</label><br>
+		<p>Now write a review.</p><br>
+		<input type="text" id="review" name="review">
+		<input type="submit">
+	</form>
+
+	{% for reviews in Reviews %}
+		<div class="userReviews">
+			{{ Review.user}}
+			{{ Review.rating}}
+			{{ Review.Review}}
+		</div>
+	{% end for %}
 </article>
 {% if cast %}
 <aside>
