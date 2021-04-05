@@ -1,7 +1,7 @@
 from MyTvList.models import UserProfile
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from MyTvList.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
@@ -17,13 +17,11 @@ def index(request):
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
-    """
-    Username = request.user
-    if Username.is_authenticated:
- 
-  
-        profile = UserProfile.objects.get(pk = Username.id)
 
+    if request.user.is_authenticated:
+
+        profile = get_object_or_404(UserProfile, user=request.user)
+        #profile = UserProfile.objects.get(pk = Username.id)
 
         UserFavouriteShow = profile.favourite_Show_Name
 
@@ -32,8 +30,8 @@ def index(request):
 
         for rec in context_dict['recs']:
             rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
-"""
-    #print(context_dict)
+
+        #print(context_dict)
 
     response = render(request, 'Homepage.html', context=context_dict)
 
@@ -122,7 +120,8 @@ def recommended(request):
     context_dict = {}
     Username = request.user
 
-    profile = UserProfile.objects.get(pk = Username.id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    #profile = UserProfile.objects.get(pk = Username.id)
     UserFavouriteShow = profile.favourite_Show_Name
     context_dict['favouriteShow'] = UserFavouriteShow
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)

@@ -10,17 +10,15 @@ class UserProfile(models.Model):
 
     picture = models.ImageField(upload_to='profile_images', blank=True)
     favourite_Show_Name = models.CharField(max_length=1000, blank=True)
-    favouriteShow = models.IntegerField(default = None)
 
-    watchlist = [favouriteShow,]
-    #watchlist = [tmdbSimpleApi.getId(favourite_Show_Name),] since favouriteShow might always be none, not sure yet
+    #watchlist = [favouriteShow,] removed favouriteShow
+    watchlist = [tmdbSimpleApi.getId(favourite_Show_Name),]
     
 
-    def getFavouriteShow(self):
-        return self.favouriteShow
+
 
     def __str__(self):
-        return self.user.username
+        return self.user
 
     def add_watchlist(show):
         watchlist.append(tmdbSimpleApi.getId(show))

@@ -29,7 +29,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('picture', 'favourite_Show_Name', 'favouriteShow',)
+        fields = ('picture', 'favourite_Show_Name',)
 
     
     def clean(self):
@@ -51,7 +51,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('username', 'rating', 'review',)    #idk if username should be in here cause it's a part of User and not review, 
+        fields = ('rating', 'review',)    #idk if username should be in here cause it's a part of User and not review, 
                                                       #it might work different cause it's a foriegn key tho idk how they work really
 
     def clean(self):
