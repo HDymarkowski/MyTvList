@@ -158,3 +158,13 @@ def showPage(request):
 
     response = render(request, 'showPage.html',context=context_dict)
     return response
+
+def watchListPage(request):
+    watchList = []
+    context_dict = []
+    for show in watchList:
+        context_dict['shows'].append(tmdbSimpleApi.getWatchListShow(show))
+        context_dict['shows'][show]['imgFile'] = tmdbSimpleApi.img(show['image'])
+
+    response = render(request, 'watchList.html',context=context_dict)  
+    

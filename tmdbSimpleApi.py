@@ -159,7 +159,16 @@ def getShowPage(showName):
     except HTTPError as e:
         return None
 
-getShowPage("The sopranos")
+def getWatchListShow(showName):
+    try:
+        showId = getId(showName)
+        show = tmdb.TV(showId)
+        showInfo = show.info()
+        showImages = show.images()
+
+        return {'name' : showInfo['name'], 'poster_path' : showImages['posters'][0]['file_path']}
+    except HTTPError as e:
+            return None
 
 #print(getShow("The Sopranos"))
 # TODO Cast, images, videos?
