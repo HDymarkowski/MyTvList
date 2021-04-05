@@ -1,4 +1,4 @@
-from MyTvList.models import UserProfile, User
+from MyTvList.models import UserProfile
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -110,15 +110,8 @@ def topshows(request):
 def recommended(request):
 
     context_dict = {}
-    user_list = UserProfile.objects.all()
 
-    Username = request.user
-    userobject = User.objects.get(id = Username.id)
-    
-    profile = UserProfile.objects.get(pk = Username.id)
-
-    UserFavouriteShow = profile.favourite_Show_Name
-    context_dict['favouriteShow'] = UserFavouriteShow
+    UserFavouriteShow = UserProfile.favourite_Show_Name
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
     #context_dict['recs'] = [{'title':'test', 'tagline': 'test', 'poster_path': ''}]
 
@@ -139,10 +132,11 @@ def castPage(request):
 
     return response
 
-def showPage(request, show_name):
-    print(show_name)
+def showPage(request):
+    if request.method == "POST":
+        search_input = request.POST['search_input']
     #context_dict = tmdbSimpleApi.getShowPage(show)
-    context_dict = tmdbSimpleApi.getShowPage(show_name)
+    context_dict = tmdbSimpleApi.getShowPage(search_input)
 
     context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
 
