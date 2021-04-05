@@ -21,7 +21,7 @@ def index(request):
     Username = request.user
     if Username.is_authenticated:
 
-        profile = UserProfile.objects.get(pk = Username.id)
+        profile = UserProfile.objects.get(pk = Username)
         UserFavouriteShow = profile.favourite_Show_Name
 
         context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
@@ -119,7 +119,7 @@ def recommended(request):
     context_dict = {}
     Username = request.user
 
-    profile = UserProfile.objects.get(pk = Username.id)
+    profile = UserProfile.objects.get(pk = Username)
     UserFavouriteShow = profile.favourite_Show_Name
     context_dict['favouriteShow'] = UserFavouriteShow
     context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 10)
