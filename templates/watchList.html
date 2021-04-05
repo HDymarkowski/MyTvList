@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	watchList
+{% endblock %}
+
+{% block section_block %}
+{% if shows %}
+	<table>
+		<tr>
+		{% for show in shows %}
+			<th>
+				<div Class="show">
+					<!-- this section displays an entry for the show -->
+					<img src="{{ MEDIA_URL }}{{ show.imgFile }}" alt="thumbnail">
+					<h3>
+						{{ show.name}}
+					</h3>
+					<div Class="Rating">
+						{{ credit.rating }}
+					</div>
+					<p>
+						{{ show.review }}
+					</p>
+				</div>
+			</th>
+		{% endfor %}
+		</tr>
+	</table>
+</article>
+</section>
+{% endif %}
+{% endblock %}

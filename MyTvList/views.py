@@ -17,19 +17,19 @@ def index(request):
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
+    
+    if request.user.is_authenticated:
+        Username = request.user
 
-    Username = request.user
+        profile = UserProfile.objects.get(pk = Username.id)
+        UserFavouriteShow = profile.favourite_Show_Name
 
-    profile = UserProfile.objects.get(pk = Username.id)
-    UserFavouriteShow = profile.favourite_Show_Name
-
-    context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
+        context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
 
 
-    for rec in context_dict['recs']:
-        rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
+        for rec in context_dict['recs']:
+            rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
 
-    print(context_dict)
 
     response = render(request, 'Homepage.html', context=context_dict)
 
