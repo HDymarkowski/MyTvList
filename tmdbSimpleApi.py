@@ -149,7 +149,7 @@ def getShowPage(showName):
         castList = []
         showCast = show.credits()['cast']
 
-
+        #this doesn't work for casts of less than 3
         for i in range(3):
             curCast = showCast[i]
             castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
