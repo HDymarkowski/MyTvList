@@ -21,8 +21,6 @@ def index(request):
     context_dict['popular']['videoURL'] = tmdbSimpleApi.getVideo(context_dict['popular']['id'])
     context_dict['popular']['year'] = context_dict['popular']['first_air_date'][:4]
 
-    print(context_dict)
-
     if request.user.is_authenticated:
 
         profile = get_object_or_404(UserProfile, user=request.user)

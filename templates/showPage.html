@@ -6,22 +6,51 @@
 {% endblock %}
 
 {% block section_block %}
-<article>
-	<div class="Show">
-		<!-- this section displays info about the show -->
-		<h2>
-			{{ title }}
-		</h2>
-		<img src = "{{ MEDIA_URL}}{{ imgFile }}", width = 200px, height = 300px>
-		<iframe src="{{ videoURL }}?mute=1", width="600px", height="400px" class="video"></iframe>
-		{{ rating }}
+<div class="main">
+	<div class="content_wrapper">
+		<div class="title_block">
+			<div class="title_bar">
+				<h1>
+					{{ title }}
+					<span>
+						<!--({{ popular.year }})-->
+					</span>
+				</h1>
+			</div>
 		</div>
-		<p1>
-			{{ description }}
-		</p1>
+		<div class="slate_wrapper">
+			<img src = "{{ MEDIA_URL }}{{ imgFile }}", width = 266px, height = 400px name="{{ popular.name }}" class="clickable">
+			<iframe src="{{ videoURL }}?mute=1", width="600px", height="400px" class="video"></iframe>
+		</div>
+		<div class="show_summary">
+			<div class="plot_summary">
+				<div class="plot_overview">
+					<div class="plot_overview_text">
+						{{ description }}
+					</div>
+				</div>
+				<div>
+					
+				</div>
+				<div class="show_airdate">
+					<!--Realse date: {{ popular.first_air_date }}-->
+				</div>
+				<div class="show_review">
+					<div class="rating">
+						<!--Rating: {{ popular.vote_average }}-->
+					</div>
+					<div class="divider">
+						
+					</div>
+					<div class="rating_numbers">
+						<!--Number of votes: {{ popular.vote_count }}-->
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-
+</div>
+<article>
 	<form id="ReviewForm" method="post" action="{% url 'MyTvList:showPage' %}" 
 		  enctype="multipart/form-data">
 

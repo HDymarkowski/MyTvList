@@ -148,11 +148,17 @@ def getShowPage(showName):
         showImages = show.images()
         castList = []
         showCast = show.credits()['cast']
+        print(len(showCast))
 
         #this doesn't work for casts of less than 3
-        for i in range(3):
-            curCast = showCast[i]
-            castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
+        if len(showCast)<4:
+            for i in range(len(showCast)):
+                curCast = showCast[i]
+                castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
+        else:
+            for i in range(4):
+                curCast = showCast[i]
+                castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
 
 
         return {'title' : showInfo['name'], 'description' : showInfo['overview'], 'poster_path' : showImages['posters'][0]['file_path'], 'cast' : castList}
