@@ -75,19 +75,7 @@
 	{% endif %}
 </div>
 <article>
-	<form id="ReviewForm" method="post" action="{% url 'MyTvList:showPage' %}" 
-		  enctype="multipart/form-data">
-
-		{% csrf_token %}
-
-		<!--Display each form-->
-
-		{{ ReviewForm.as_p }}
-
-		<!--Provide a button to click to submit the form.-->
-		<input type="submit" name="submit" value = "Add Review" />
-
-	</form>
+	<a href="addReview.html>Add a Review</a>
 
 	<table>
 		<tr>
