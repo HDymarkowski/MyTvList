@@ -16,8 +16,12 @@ def index(request):
     # TODO make getPopular to work somehow?
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
+    
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
     context_dict['popular']['videoURL'] = tmdbSimpleApi.getVideo(context_dict['popular']['id'])
+    context_dict['popular']['year'] = context_dict['popular']['first_air_date'][:4]
+
+    print(context_dict)
 
     if request.user.is_authenticated:
 

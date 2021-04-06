@@ -54,10 +54,10 @@
             <!-- nav bar with links to each major page in the site -->
             <ul class="nav_links">
 
-                <li><a href="{% url 'MyTvList:index' %}">Homepage</a></li>
-                <li><a href="{% url 'MyTvList:topshows' %}">Top shows</a></li>
+                <li><a href="{% url 'MyTvList:index' %}" id="bezove">Homepage</a></li>
+                <li><a href="{% url 'MyTvList:topshows' %}" id="bezove">Top shows</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'MyTvList:recommended' %}">Recommended for you</a></li>
+                    <li><a href="{% url 'MyTvList:recommended' %}" id="bezove">Recommended for you</a></li>
                 {% endif %}
                 <li>
                     <div class="search_container">
@@ -92,19 +92,19 @@
             </ul>
         <script src="{% static "js/script.js" %}"></script>
         </nav>
-
-            <!-- profile pic -->
-            <!--<img src="ProfilePic.jpg" alt="profile pic">-->
-
-            <!-- search bar leads to results page -->
-           
-            <!-- link for users to log in -->
-        <div class="user_button">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="user_button">
             {% if user.is_authenticated %}
-                <a href="{% url 'MyTvList:logout' %}"><button>Log Out</button></a>
+                <a href="{% url 'MyTvList:logout' %}"><button id="tmave">Log Out</button></a>
             {% else %}
-                <a href="{% url 'MyTvList:login' %}"><button>Log In</button></a>
+                <a href="{% url 'MyTvList:login' %}"><button id="tmave">Log In</button></a>
             {% endif %}
+            </div>
+        </div>
+
+        <div id="main">
+          <span id="nav_menu"onclick="openNav()">Menu &#9776;</span>
         </div>
     </header>
 

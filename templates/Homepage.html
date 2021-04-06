@@ -6,53 +6,76 @@
 {% endblock %}
 	
 {% block section_block %}
-{% if popular %}
-<article>
-	<div class="content_wrapper">
-		<div class="title_block">
-			
+<div class="main">
+	{% if popular %}
+		<div class="content_wrapper">
+			<div class="title_block">
+				<div class="title_bar">
+					<h1>
+						<i class="material-icons" style="font-size: 36px, vertical-align: center;">
+							equalizer
+						</i>
+						{{ popular.name }}
+						<span>
+							({{ popular.year }})
+						</span>
+					</h1>
+				</div>
+			</div>
+			<div class="slate_wrapper">
+				<img src = "{{ MEDIA_URL }}{{ popular.imgFile }}", width = 266px, height = 400px name="{{ popular.name }}" class="clickable">
+				<iframe src="{{ popular.videoURL }}?mute=1", width="600px", height="400px" class="video"></iframe>
+			</div>
+			<div class="show_summary">
+				<div class="plot_summary">
+					<div class="plot_overview">
+						<div class="plot_overview_text">
+							{{ popular.overview }}
+						</div>
+					</div>
+					<div>
+						
+					</div>
+					<div class="show_airdate">
+						Realse date: {{ popular.first_air_date }}
+					</div>
+					<div class="show_review">
+						<div class="rating">
+							Rating: {{ popular.vote_average }}
+						</div>
+						<div class="divider">
+							
+						</div>
+						<div class="rating_numbers">
+							Number of votes: {{ popular.vote_count }}
+						</div>
+					</div>
+				</div>
+				<div class="redirect_wrapper">
+					<div name="{{ popular.name }}" class="clickable">
+						Show more
+					</div>
+				</div>
+			</div>
+			<p1>
+				{{ popular.description }}
+			</p1>
 		</div>
-		<h1>
-			{{ popular.name }}
-		</h1>
-		<img src = "{{ MEDIA_URL }}{{ popular.imgFile }}", width = 266px, height = 400px class="poster">
-		<iframe src="{{ popular.videoURL }}?mute=1", width="600px", height="400px" class="video"></iframe>
-		
-		<p1>
-			{{ popular.description }}
-		</p1>
-	</div>
-</article>
-{% else %}
-<p>Cannot retreive a popular show</p>
-{% endif %}
-{% if user.is_authenticated %}
-    {% if recs %}
-    <aside>
-        <h2>
-            recommended for you
-        </h2>
-        <table>
-            <tr>
-                {% for rec in recs %}
-                <th name="{{rec.title}}" class="clickable">
-                <div Class="recommendedShow">
-                    <!-- this section displays an entry for the recommended shows list -->
-                   
-                    <img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail", width = 200px, height = 300px>
-                    <p>{{ rec.tagline }}</p>
-                    <div Class="ratings">
-                        {{ rec.rating }}
-                    </div>
-                </div>
-            </th>
-            {% endfor %}
-            </tr>
-        </table>
-       
-        <!-- link leads to the recommended page -->
-        <a href="{% url 'MyTvList:recommended' %}">Recommended for you</a>
-    </aside>
-    {% endif %}
-{% endif %}
-{% endblock %}
+	{% else %}
+		<p>Cannot retreive a popular show</p>
+	{% endif %}
+	{% if user.is_authenticated %}
+		{% if recs %}
+		    <div class="recommended_wrapper">
+		    	<div class="recommended_title">
+		        	<a href="{% url 'MyTvList:recommended' %}" id="recommended_title">Recommended</a>
+		    	</div>
+		    	{% for rec in recs %}
+		    		<img src="{{ MEDIA_URL }}{{ rec.poster_path }}" alt="thumbnail" name="{{ rec.name }}" class="clickable">
+		    	{% endfor %}
+		    </div>
+	    {% endif %}
+	{% endif %}
+	{% endblock %}
+</div>
+
