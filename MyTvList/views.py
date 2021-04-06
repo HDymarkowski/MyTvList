@@ -245,6 +245,7 @@ def watchListPage(request):
     return response
     
 def addReview(request):
+    review = {}
     
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
@@ -254,7 +255,6 @@ def addReview(request):
             review.save()
         else:
             print(review_form.errors)
-            review = {}
     else:
         review_form = ReviewForm()
 
