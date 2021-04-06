@@ -175,14 +175,14 @@ def showPage(request):
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
             #next section of code for reviews
-            #Username = request.user
-            #showId = search.tv(query=show)['results'][0]['id']
-            #reviews = Review.objects.filter(showName=search_input)
-            
-            #context_dict['reviews'] = reviews
+            Username = request.user
+            reviews = Review.objects.filter(showName=search_input)
 
 
-            #response = render(request, 'Reviews.html',context=context_dict)
+            userRating = Review.rating
+            userReview = Review.review
+            addReview['Rating'] = userRating
+            addReview['Review'] = userReview
             #end of review section
             
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
@@ -191,7 +191,7 @@ def showPage(request):
             for castMember in context_dict['cast']:
                 castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
 
-            response = render(request, 'showPage.html',context=context_dict)
+            response = render(request, 'showPage.html',context=context_dict, addReview)
             return response
     postList = (request.POST.getlist('name'))
     if postList:
