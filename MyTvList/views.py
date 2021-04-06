@@ -166,12 +166,12 @@ def showPage(request):
             #next section of code for reviews
             #Username = request.user
             #showId = search.tv(query=show)['results'][0]['id']
-            #reviews = Review.showPage.filter(id=search_input)
+            #reviews = Review.objects.filter(showName=search_input)
+            
+            #context_dict['reviews'] = reviews
 
-            #userRating = Review.rating
-            #userReview = Review.review
-            #context_dict['Rating'] = userRating
-            #context_dict['Review'] = userReview
+
+            #response = render(request, 'Reviews.html',context=context_dict)
             #end of review section
             
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
@@ -200,13 +200,49 @@ def showPage(request):
     return response
 
 def watchListPage(request):
-    #watchList = []
-    watchList = [33, 44]
+    profile = get_object_or_404(UserProfile, user=request.user)
+    favouriteShow = profile.favourite_Show_Name
+    #favouriteShowId = tmdbSimpleApi.getId(favouriteShow)
+    watchList = profile.watchlist
+    if favouriteShow not in watchList:
+        watchList.append(favouriteShow)
     context_dict = {}
-
     context_dict['shows'] = tmdbSimpleApi.getWatchListShows(watchList)
     for show in context_dict['shows']:
         show['imgFile'] = tmdbSimpleApi.img(show['poster_path'])
 
     response = render(request, 'watchList.html',context=context_dict)
-    return response  
+    return response
+    
+def addReview(request):
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+
+        if review_form.is_valid():
+            review = review_form.save()
+            review.save()
+        else:
+            print(review_form.errors)
+    else:
+        review_form = ReviewForm()
+
+    return render(request, 'addReview.html', context = {'add_review': review_form,})
+
+
+def showUser(request):
+    context_dict = {}
+    if request.method == "POST":
+        if 'search_input' in request.POST:
+            search_input = request.POST['search_input']
+            searched_user = get_object_or_404(UserProfile, user=search_input)
+
+            context_dict['Username'] = search_input
+            context_dict['UserIcon'] = searched_user.picture 
+            context_dict['FavouriteShow'] = searched_user.favourite_Show_Name
+
+
+
+            response = render(request, 'profile.html',context=context_dict)
+            return response
+    else:
+        return redirect(reverse('MyTvList:index'))

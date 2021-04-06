@@ -75,19 +75,7 @@
 	{% endif %}
 </div>
 <article>
-	<form id="ReviewForm" method="post" action="{% url 'MyTvList:showPage' %}" 
-		  enctype="multipart/form-data">
-
-		{% csrf_token %}
-
-		<!--Display each form-->
-
-		{{ ReviewForm.as_p }}
-
-		<!--Provide a button to click to submit the form.-->
-		<input type="submit" name="submit" value = "Add Review" />
-
-	</form>
+	<a href="{% url 'MyTvList:addReview' %}" id="bezove">add a review</a></li>
 
 	<table>
 		<tr>
@@ -95,12 +83,12 @@
 			<th>
 			<div class = "UserReview">
 				<h2>
-					{{ Review.username }}
+					{{ review.username }}
 				</h2>
 				<h2>
-					{{ Review.Rating }}
+					{{ review.Rating }}
 				</h2>
-				<p> {{ Review.review }}</p>
+				<p> {{ review.review }}</p>
 			</div>
 			</th>
 		{% endfor %}

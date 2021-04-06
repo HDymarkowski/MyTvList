@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     favourite_Show_Name = models.CharField(max_length=1000, blank=True)
 
     #watchlist = [favouriteShow,] removed favouriteShow
-    watchlist = [tmdbSimpleApi.getId(favourite_Show_Name),]
+    watchlist = []
     
 
 
@@ -26,8 +26,8 @@ class UserProfile(models.Model):
 class Review(models.Model):
         
         username = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-        #showTitle = models.ForeignKey(Shows, on_delete=models.CASCADE)
         
+        showTitle = models.CharField(max_length = 10000, blank = False) 
         rating = models.IntegerField(default = 1)
         review = models.CharField(max_length = 10000, blank = True) 
 
@@ -36,6 +36,9 @@ class Review(models.Model):
         
         def getreview(self):
             return self.review
+        
+        def getshowTitle(self):
+            return self.showTitle
         
         def Getuser(self):
             return self.user.username
