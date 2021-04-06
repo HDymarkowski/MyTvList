@@ -18,7 +18,7 @@ def index(request):
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
     context_dict['popular']['videoURL'] = tmdbSimpleApi.getVideo(context_dict['popular']['id'])
-    
+
     if request.user.is_authenticated:
 
         profile = get_object_or_404(UserProfile, user=request.user)
@@ -159,6 +159,7 @@ def showPage(request):
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
+            context_dict['videoURL'] = tmdbSimpleApi.getVideo(tmdbSimpleApi.getId(search_input))
 
             for castMember in context_dict['cast']:
                 castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
@@ -173,6 +174,8 @@ def showPage(request):
     context_dict = tmdbSimpleApi.getShowPage(postList)
 
     context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
+    print(context_dict)
+    context_dict['videoURL'] = tmdbSimpleApi.getVideo(tmdbSimpleApi.getId(postList))
 
     for castMember in context_dict['cast']:
         castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
