@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     favourite_Show_Name = models.CharField(max_length=1000, blank=True)
 
     #watchlist = [favouriteShow,] removed favouriteShow
-    watchlist = [tmdbSimpleApi.getId(favourite_Show_Name),]
+    watchlist = []
     
 
 

@@ -12,4 +12,5 @@ urlpatterns = [
     path('castPage/', views.castPage, name='castPage'),
     path('showPage/', views.showPage, name='showPage'),
     path('watchListPage/', views.watchListPage, name='watchListPage'),
+    path('showUser/', views.showUser, name='showUser'),
 ]

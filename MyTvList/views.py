@@ -200,10 +200,13 @@ def showPage(request):
     return response
 
 def watchListPage(request):
-    #watchList = []
-    watchList = [33, 44]
+    profile = get_object_or_404(UserProfile, user=request.user)
+    favouriteShow = profile.favourite_Show_Name
+    #favouriteShowId = tmdbSimpleApi.getId(favouriteShow)
+    watchList = profile.watchlist
+    if favouriteShow not in watchList:
+        watchList.append(favouriteShow)
     context_dict = {}
-
     context_dict['shows'] = tmdbSimpleApi.getWatchListShows(watchList)
     for show in context_dict['shows']:
         show['imgFile'] = tmdbSimpleApi.img(show['poster_path'])
@@ -226,3 +229,22 @@ def addReview(request):
     return render(request,
                   'addReviews.html',
                   context = {'add review': review_form,})
+
+
+def showUser(request):
+    context_dict = {}
+    if request.method == "POST":
+        if 'search_input' in request.POST:
+            search_input = request.POST['search_input']
+            searched_user = get_object_or_404(UserProfile, user=search_input)
+
+            context_dict['Username'] = search_input
+            context_dict['UserIcon'] = searched_user.picture 
+            context_dict['FavouriteShow'] = searched_user.favourite_Show_Name
+
+
+
+            response = render(request, 'profile.html',context=context_dict)
+            return response
+    else:
+        return redirect(reverse('MyTvList:index'))
