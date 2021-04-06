@@ -257,7 +257,8 @@ def addReview(request):
             print(review_form.errors)
     else:
         review_form = ReviewForm()
-
+            print(review)
+            
     return render(request, 'addReview.html', context = {'add_review': review,})
 
 
