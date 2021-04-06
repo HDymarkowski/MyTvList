@@ -27,7 +27,7 @@ class Review(models.Model):
         
         username = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
         
-        showTitle = models.CharField(max_length = 10000, blank = false) 
+        showTitle = models.CharField(max_length = 10000, blank = False) 
         rating = models.IntegerField(default = 1)
         review = models.CharField(max_length = 10000, blank = True) 
 
