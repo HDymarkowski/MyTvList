@@ -176,7 +176,8 @@ def showPage(request):
             reviewDict = {}
             #next section of code for reviews
             reviews = Review.objects.filter(showTitle=search_input)
-            reviewDict['reviews'] = reviews
+            context_dict['reviews'] = reviews
+            print(context_dict)
 
             #userName = Review.username
             #userRating = Review.rating

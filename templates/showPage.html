@@ -79,16 +79,16 @@
 
 	<table>
 		<tr>
-		{% for review in reviewDict %}
+		{% for Review in reviews %}
 			<th>
 			<div class = "UserReview">
 				<h2>
-					{{ reviewDict.username }}
+					{{ Review.username }}
 				</h2>
 				<h2>
-					{{ reviewDict.Rating }}
+					{{ Review.rating }}
 				</h2>
-				<p> {{ reviewDict.review }}</p>
+				<p> {{ Review.review }}</p>
 			</div>
 			</th>
 		{% endfor %}
