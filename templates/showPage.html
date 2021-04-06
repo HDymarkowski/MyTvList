@@ -76,25 +76,16 @@
 </div>
 <article>
 	<center><a href="{% url 'MyTvList:addReview' %}" style="color:Black;" id="bezove">add a review</a></center>
-
-	<table>
-		<tr>
+	<br><br>
+	<center>
 		{% for Review in reviews %}
-			<th>
 			<div class = "UserReview">
-				<h2>
-					{{ Review.username }}
-				</h2>
-				<h2>
-					{{ Review.rating }}
-				</h2>
+				<h2>{{ Review.username }}: {{ Review.rating }}</h2>
 				<p> {{ Review.review }}</p>
 			</div>
-			</th>
+			<br>
 		{% endfor %}
-		</tr>
-	</table>
-
+	</center>
 
 </article>
 {% endblock %}
