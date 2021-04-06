@@ -30,6 +30,9 @@ def index(request):
 
         context_dict['recs'] = tmdbSimpleApi.getRecommendations(UserFavouriteShow, 3)
 
+        context_dict['profilepicture'] = profile.picture
+        context_dict['username'] = request.user
+
 
         for rec in context_dict['recs']:
             rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])

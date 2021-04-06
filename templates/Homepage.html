@@ -7,6 +7,11 @@
 	
 {% block section_block %}
 <div class="main">
+{% if user.is_authenticated %}
+	<p> {{ username }}
+	{% if profilepicture %}
+		<img src = "{{ MEDIA_URL }}{{ profilepicture }}", width = 100px, height = 150px> </p>
+{% endif %}
 	{% if popular %}
 		<div class="content_wrapper">
 			<div class="title_block">
