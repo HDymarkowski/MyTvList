@@ -93,12 +93,21 @@
         <script src="{% static "js/script.js" %}"></script>
         </nav>
         <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <div class="user_button">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             {% if user.is_authenticated %}
-                <a href="{% url 'MyTvList:logout' %}"><button id="tmave">Log Out</button></a>
+                {% if profilepicture %}
+                <div class="image_wrapper">
+                    <img src="{{ MEDIA_URL }}{{ profilepicture }}">
+                </div>
+                    
+                {% endif %}
+                <div class="username">
+                    Welcome {{ username }}
+                </div>
+                <div class="user_button">
+                    <a href="{% url 'MyTvList:logout' %}" class="logbutton"><button id="tmave">Log Out</button></a>
             {% else %}
-                <a href="{% url 'MyTvList:login' %}"><button id="tmave">Log In</button></a>
+                <a href="{% url 'MyTvList:login' %}" class="logbutton"><button id="tmave">Log In</button></a>
             {% endif %}
             </div>
         </div>

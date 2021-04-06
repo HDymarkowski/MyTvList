@@ -148,9 +148,6 @@ def getShowPage(showName):
         showImages = show.images()
         castList = []
         showCast = show.credits()['cast']
-        print(len(showCast))
-
-        #this doesn't work for casts of less than 3
         if len(showCast)<4:
             for i in range(len(showCast)):
                 curCast = showCast[i]

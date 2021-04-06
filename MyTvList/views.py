@@ -161,7 +161,6 @@ def showPage(request):
         review_form = ReviewForm(request.POST)
         if 'search_input' in request.POST:
             search_input = request.POST['search_input']
-            #context_dict = tmdbSimpleApi.getShowPage(show)
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
             #next section of code for reviews
