@@ -256,7 +256,7 @@ def addReview(request):
     else:
         review_form = ReviewForm()
 
-    return render(request, 'addReview.html', context = {'add_review': review_form,})
+    return render(request, 'addReview.html', context = {'add_review': review,})
 
 
 def showUser(request):
