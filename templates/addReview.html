@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Add a Review
+{% endblock %}
+
+{% block section_block %}
+<h1>add a review</h1>
+
+<form id="review_form" method="post" action="{% url 'MyTvList:review' %}" 
+	  enctype="multipart/form-data">
+
+	{% csrf_token %}
+
+	<!--Display each form-->
+
+	{{ Review_form.as_p }}
+	
+	<!--Provide a button to click to submit the form.-->
+	<input type="submit" name="submit" value="add review" />
+	
+</form>
+{% endif %}
+{% endblock %}
