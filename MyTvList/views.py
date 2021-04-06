@@ -175,7 +175,7 @@ def showPage(request):
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
             #next section of code for reviews
-            reviews = Review.objects.filter(showName=search_input)
+            reviews = Review.objects.filter(showTitle=search_input)
 
             userName = Review.sername
             userRating = Review.rating
