@@ -251,8 +251,8 @@ def addReview(request):
         review_form = ReviewForm(request.POST)
 
         if review_form.is_valid():
-            review = review_form.save()
-            review.save()
+            review_form.save()
+            #review.save()
         else:
             print(review_form.errors)
     else:
