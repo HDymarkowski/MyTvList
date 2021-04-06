@@ -173,7 +173,7 @@ def showPage(request):
         if 'search_input' in request.POST:
             search_input = request.POST['search_input']
             context_dict = tmdbSimpleApi.getShowPage(search_input)
-            ReviewDict = {}
+            reviewDict = {}
             #next section of code for reviews
             reviews = Review.objects.filter(showTitle=search_input)
             reviewDict['reviews'] = reviews
