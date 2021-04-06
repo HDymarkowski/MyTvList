@@ -13,5 +13,5 @@ urlpatterns = [
     path('showPage/', views.showPage, name='showPage'),
     path('watchListPage/', views.watchListPage, name='watchListPage'),
     path('showUser/', views.showUser, name='showUser'),
-    path('addReview/', views.adRevoew, name='addReview'),
+    path('addReview/', views.addReview, name='addReview'),
 ]
