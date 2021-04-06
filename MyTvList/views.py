@@ -1,4 +1,4 @@
-from MyTvList.models import UserProfile
+from MyTvList.models import UserProfile, Review
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
