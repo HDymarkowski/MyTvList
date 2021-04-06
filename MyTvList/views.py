@@ -177,7 +177,7 @@ def showPage(request):
             #next section of code for reviews
             reviews = Review.objects.filter(showTitle=search_input)
 
-            userName = Review.sername
+            userName = Review.username
             userRating = Review.rating
             userReview = Review.review
             addReview['Rating'] = userRating
