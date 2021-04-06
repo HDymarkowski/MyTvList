@@ -153,6 +153,7 @@ global var
 def showPage(request):
     global var
     if request.method == "POST":
+        review_form = ReviewForm(request.POST)
         if 'search_input' in request.POST:
             search_input = request.POST['search_input']
             #context_dict = tmdbSimpleApi.getShowPage(show)
