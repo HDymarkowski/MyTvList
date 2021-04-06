@@ -160,14 +160,14 @@ def showPage(request):
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
             #next section of code for reviews
-            Username = request.user
+            #Username = request.user
             #showId = search.tv(query=show)['results'][0]['id']
             #reviews = Review.showPage.filter(id=search_input)
 
-            userRating = Review.rating
-            userReview = Review.review
-            context_dict['Rating'] = userRating
-            context_dict['Review'] = userReview
+            #userRating = Review.rating
+            #userReview = Review.review
+            #context_dict['Rating'] = userRating
+            #context_dict['Review'] = userReview
             #end of review section
             
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
