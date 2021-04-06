@@ -25,7 +25,7 @@ class UserForm(forms.ModelForm):
         return cleaned_data
 
 class UserProfileForm(forms.ModelForm):
-    favouriteShow = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    #favouriteShow = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
         model = UserProfile
@@ -43,21 +43,22 @@ class UserProfileForm(forms.ModelForm):
         return cleaned_data
     
 class ReviewForm(forms.ModelForm):
-    RatingInput = forms.IntegerField(initial=1)
-    ReviewInput = forms.CharField(initial="")
-    
+    #RatingInput = forms.IntegerField(initial=1)
+    #ReviewInput = forms.CharField(initial="")
+    showTitle = forms.CharField(max_length = 10000)    
+
     #rating = forms.IntegerField(widget=forms.RatingInput())
     #writtenReview = forms.CharField(widget=forms.ReviewInput())    
 
     class Meta:
         model = Review
-        fields = ('rating', 'review',)    #idk if username should be in here cause it's a part of User and not review, 
+        fields = ('rating', 'review', 'showTitle',)    #idk if username should be in here cause it's a part of User and not review, 
                                                       #it might work different cause it's a foriegn key tho idk how they work really
 
     def clean(self):
         cleaned_data = super(ReviewForm, self).clean()
-        Rating = cleaned_data.get("ratingInput")
-        Review = cleaned_data.get("ReviewInput")
+        Rating = cleaned_data.get("rating")
+        Review = cleaned_data.get("review")
 
         if Rating < 1:
             self.add_error('ratingInput', "Must be between 1 and 5.")

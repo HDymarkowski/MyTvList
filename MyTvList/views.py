@@ -144,7 +144,7 @@ def recommended(request):
 
     for rec in context_dict['recs']:
         rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
-
+    
     context_dict['profilepicture'] = profile.picture
     context_dict['username'] = request.user
 
@@ -161,14 +161,6 @@ def castPage(request):
 
     for cred in context_dict['credits']:
         cred['imgFile'] = tmdbSimpleApi.img(cred['image'])
-
-    if request.user.is_authenticated:
-
-        profile = get_object_or_404(UserProfile, user=request.user)
-
-        context_dict['profilepicture'] = profile.picture
-        context_dict['username'] = request.user
-
     response = render(request, 'castPage.html',context=context_dict)
 
     return response
@@ -215,7 +207,6 @@ def showPage(request):
     for castMember in context_dict['cast']:
         castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
 
-
     if request.user.is_authenticated:
 
         profile = get_object_or_404(UserProfile, user=request.user)
@@ -240,26 +231,22 @@ def watchListPage(request):
 
     context_dict['profilepicture'] = profile.picture
     context_dict['username'] = request.user
-
     response = render(request, 'watchList.html',context=context_dict)
-    return response
+    return response  
     
 def addReview(request):
-    review = {}
-    
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
 
         if review_form.is_valid():
-            review_form.save(commit = True)
-            #review.save()
+            review = review_form.save()
+            review.save()
         else:
             print(review_form.errors)
     else:
         review_form = ReviewForm()
-        print(review)
-            
-    return render(request, 'addReview.html', context = {'add_review': review,})
+
+    return render(request, 'addReview.html', context = {'add_review': review_form})
 
 
 def showUser(request):
