@@ -157,6 +157,8 @@
 	opacity: 1;
 	pointer-events: auto;
 	cursor: pointer;
+	position: relative;
+	z-index: 100;
 }
 
 .MyTvListHeader .search_container .search_box .search_field.active .autocom_box li {
