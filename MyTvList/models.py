@@ -26,7 +26,8 @@ class UserProfile(models.Model):
 class Review(models.Model):
         
         username = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-         
+        #showTitle = models.ForeignKey(Shows, on_delete=models.CASCADE)
+        
         rating = models.IntegerField(default = 1)
         review = models.CharField(max_length = 10000, blank = True) 
 
@@ -38,3 +39,6 @@ class Review(models.Model):
         
         def Getuser(self):
             return self.user.username
+        
+       # def getShowName(self):
+       #     return self.Show.ShowName

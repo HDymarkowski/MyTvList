@@ -43,7 +43,7 @@ class UserProfileForm(forms.ModelForm):
         return cleaned_data
     
 class ReviewForm(forms.ModelForm):
-    ratingInput = forms.IntegerField(initial=1)
+    RatingInput = forms.IntegerField(initial=1)
     ReviewInput = forms.CharField(initial="")
     
     #rating = forms.IntegerField(widget=forms.RatingInput())

@@ -1,9 +1,9 @@
-from MyTvList.models import UserProfile
+from MyTvList.models import UserProfile, Review
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
-from MyTvList.forms import UserForm, UserProfileForm
+from MyTvList.forms import UserForm, UserProfileForm, ReviewForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -157,11 +157,23 @@ global var
 def showPage(request):
     global var
     if request.method == "POST":
+        review_form = ReviewForm(request.POST)
         if 'search_input' in request.POST:
             search_input = request.POST['search_input']
             #context_dict = tmdbSimpleApi.getShowPage(show)
             context_dict = tmdbSimpleApi.getShowPage(search_input)
 
+            #next section of code for reviews
+            #Username = request.user
+            #showId = search.tv(query=show)['results'][0]['id']
+            #reviews = Review.showPage.filter(id=search_input)
+
+            #userRating = Review.rating
+            #userReview = Review.review
+            #context_dict['Rating'] = userRating
+            #context_dict['Review'] = userReview
+            #end of review section
+            
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
             context_dict['videoURL'] = tmdbSimpleApi.getVideo(tmdbSimpleApi.getId(search_input))
 
