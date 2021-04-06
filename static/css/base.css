@@ -221,6 +221,7 @@
 	margin-right: auto;
 	height: 800px;
 }
+
 .content_wrapper {
 	box-sizing: content-box;
 	display: block;
@@ -389,7 +390,6 @@
 
 
 aside {
-    font-family: "Lato", sans-serif;
     transition: background-color .5s;
 }
 
@@ -447,9 +447,13 @@ aside {
 	text-align: center;
 }
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
+.main_showpage {
+    box-sizing: border-box;
+	display: block;
+	width: 870px;	
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
 }
 
 @media screen and (max-height: 450px) {
@@ -458,6 +462,47 @@ aside {
 }
 
 
+.cast {
+	box-sizing: content-box;
+	display: block;
+	width: 100%;
+}
+
+.cast .castM {
+	overflow: hidden;
+	width: 100%;
+	padding: 20px 20px;
+	display: block;
+	text-align: center;
+	float: left;
+}
+
+.cast .castM img {
+	width: 180px;
+	height: 270px;
+	display: block;
+}
+
+.cast .castM .castM_info {
+	display: block;
+	padding: 18.75px 10px;
+	text-align: center;
+	vertical-align: center;
+}
+
+.cast .castM .castM_info .castM_name {
+	display: block;
+	font-size: 20px;
+	font-weight: 500;
+	color: #3c2f2f;
+}
+
+.cast .castM .castM_info .castM_charname {
+	display: block;
+	font-size: 20px;
+	font-weight: 500;
+	color: #3c2f2f;
+}
 
 ::-webkit-input-placeholder{
 	color: #3c2f2f;

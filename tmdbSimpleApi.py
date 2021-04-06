@@ -158,7 +158,7 @@ def getShowPage(showName):
                 castList.append({'name' : curCast['name'], 'character' : curCast['character'], 'image' : curCast['profile_path']})
 
 
-        return {'title' : showInfo['name'], 'description' : showInfo['overview'], 'poster_path' : showImages['posters'][0]['file_path'], 'cast' : castList}
+        return {'title' : showInfo['name'], 'description' : showInfo['overview'], 'poster_path' : showImages['posters'][0]['file_path'], 'cast' : castList, 'first_air_date' : showInfo['first_air_date'], 'vote_count' : showInfo['vote_count'], 'vote_average': showInfo['vote_average'] }
     except HTTPError as e:
         return None
 

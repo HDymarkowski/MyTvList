@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block section_block %}
-<div class="main">
+<div class="main_showpage">
 	<div class="content_wrapper">
 		<div class="title_block">
 			<div class="title_bar">
@@ -33,22 +33,46 @@
 					
 				</div>
 				<div class="show_airdate">
-					<!--Realse date: {{ popular.first_air_date }}-->
+					Realse date: {{ first_air_date }}
 				</div>
 				<div class="show_review">
 					<div class="rating">
-						<!--Rating: {{ popular.vote_average }}-->
+						Rating: {{ vote_average }}
 					</div>
 					<div class="divider">
 						
 					</div>
 					<div class="rating_numbers">
-						<!--Number of votes: {{ popular.vote_count }}-->
+						Number of votes: {{ vote_count }}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	{% if cast %}
+	<div class="cast">
+		<table>
+			<tr>
+				{% for castMember in cast %}
+				<th name="{{castMember.name }}" class="clickable2">
+					<div Class="castM">
+						<!-- this section displays an entry for the cast list -->
+						<img src="{{ MEDIA_URL }}{{ castMember.imgFile }}" alt="thumbnail">
+						<div class="castM_info">
+							<div class="castM_name">
+								{{ castMember.name }}
+							</div>
+							<div class="castM_charname">
+								{{ castMember.character }}
+							</div>
+						</div>
+					</div>
+				</th>
+				{% endfor %}
+			</tr>
+		</table>
+	</div>
+	{% endif %}
 </div>
 <article>
 	<form id="ReviewForm" method="post" action="{% url 'MyTvList:showPage' %}" 
@@ -85,26 +109,4 @@
 
 
 </article>
-{% if cast %}
-<aside>
-	<h2>
-		Cast
-	</h2>
-	<table>
-		<tr>
-			{% for castMember in cast %}
-			<th>
-				<div Class="castMember">
-					<!-- this section displays an entry for the cast list -->
-					<img src="{{ MEDIA_URL }}{{ castMember.imgFile }}" alt="thumbnail", width = 200px, height = 300px>
-					<h4>
-						{{ castMember.name }} as {{ castMember.character }}
-					</h4>
-				</div>
-			</th>
-			{% endfor %}
-		</tr>
-	</table>
-</aside>
-{% endif %}
 {% endblock %}

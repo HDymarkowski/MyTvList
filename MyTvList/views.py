@@ -211,3 +211,20 @@ def watchListPage(request):
     response = render(request, 'watchList.html',context=context_dict)
     return response  
     
+def showUser(request):
+    context_dict = {}
+    if request.method == "POST":
+        if 'search_input' in request.POST:
+            search_input = request.POST['search_input']
+            searched_user = get_object_or_404(UserProfile, user=search_input)
+
+            context_dict['Username'] = search_input
+            context_dict['UserIcon'] = searched_user.picture 
+            context_dict['FavouriteShow'] = searched_user.favourite_Show_Name
+
+
+
+            response = render(request, 'showPage.html',context=context_dict)
+            return response
+    else:
+        return redirect(reverse('MyTvList:index'))
