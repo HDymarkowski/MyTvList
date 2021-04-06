@@ -17,7 +17,8 @@ def index(request):
     context_dict = {}
     context_dict['popular'] = tmdbSimpleApi.getPopular(1)
     context_dict['popular']['imgFile'] =tmdbSimpleApi.img(context_dict['popular']['poster_path'])
-
+    context_dict['popular']['videoURL'] = tmdbSimpleApi.getVideo(context_dict['popular']['id'])
+    
     if request.user.is_authenticated:
 
         profile = get_object_or_404(UserProfile, user=request.user)

@@ -8,13 +8,16 @@
 {% block section_block %}
 {% if popular %}
 <article>
-	<div class="topShow">
-		<!-- this section displays the top rated show -->
-		<!-- I replaced the youtube video with an image here-->
-		<img src = "{{ MEDIA_URL }}{{ popular.imgFile }}", width = 200px, height = 300px>
-		<h2>
+	<div class="content_wrapper">
+		<div class="title_block">
+			
+		</div>
+		<h1>
 			{{ popular.name }}
-		</h2>
+		</h1>
+		<img src = "{{ MEDIA_URL }}{{ popular.imgFile }}", width = 266px, height = 400px class="poster">
+		<iframe src="{{ popular.videoURL }}?mute=1", width="600px", height="400px" class="video"></iframe>
+		
 		<p1>
 			{{ popular.description }}
 		</p1>

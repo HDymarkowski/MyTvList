@@ -202,3 +202,7 @@ def img(file_path):
     with open("media/" + filename,'wb') as w:
         w.write(r.content)
     return filename
+
+def getVideo(tv_id):
+    video_key = requests.get('https://api.themoviedb.org/3/tv/'+str(tv_id)+'/videos?api_key={}&language=en-US'.format(tmdb.API_KEY)).json()['results'][0]['key']
+    return "https://www.youtube.com/embed/"+video_key   

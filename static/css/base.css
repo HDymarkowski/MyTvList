@@ -189,7 +189,15 @@
 	color: #be9b7b;
 }
 
-
+.content_wrapper {
+	box-sizing: border-box;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+	border-style: solid;
+	border: 10px
+}
 
 
 
