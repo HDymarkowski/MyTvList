@@ -245,14 +245,8 @@ def addReview(request):
             print(review_form.errors)
     else:
         review_form = ReviewForm()
-<<<<<<< HEAD
 
     return render(request, 'addReview.html', context = {'add_review': review_form})
-=======
-        print(review)
-            
-    return render(request, 'addReview.html', context = {'add_review': review_form,})
->>>>>>> 069bb6684c62ff8278adf6cf7431e41d04cc223e
 
 
 def showUser(request):

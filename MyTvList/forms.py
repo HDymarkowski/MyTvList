@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from MyTvList.models import UserProfile
+from MyTvList.models import User, UserProfile
 from MyTvList.models import Review
 from django.db import models
 import tmdbSimpleApi
@@ -46,13 +46,13 @@ class ReviewForm(forms.ModelForm):
     #RatingInput = forms.IntegerField(initial=1)
     #ReviewInput = forms.CharField(initial="")
     showTitle = forms.CharField(max_length = 10000)    
-
+    #username = request.user
     #rating = forms.IntegerField(widget=forms.RatingInput())
     #writtenReview = forms.CharField(widget=forms.ReviewInput())    
 
     class Meta:
         model = Review
-        fields = ('rating', 'review', 'showTitle',)    #idk if username should be in here cause it's a part of User and not review, 
+        fields = ('username', 'rating', 'review', 'showTitle',)    #idk if username should be in here cause it's a part of User and not review, 
                                                       #it might work different cause it's a foriegn key tho idk how they work really
 
     def clean(self):

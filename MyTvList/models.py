@@ -16,7 +16,7 @@ class UserProfile(models.Model):
 
 
     def __str__(self):
-        return self.user
+        return str(self.user.username)
 
     def add_watchlist(show):
         watchlist.append(tmdbSimpleApi.getId(show))
