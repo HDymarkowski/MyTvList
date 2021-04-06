@@ -11,7 +11,7 @@
 		<tr>
 		{% for show in shows %}
 			<th>
-				<div Class="show">
+				<div name="{{ show.name }}" class="clickable">
 					<!-- this section displays an entry for the show -->
 					<img src="{{ MEDIA_URL }}{{ show.imgFile }}" alt="thumbnail", width = 150px, height = 250px>
 					<h3>

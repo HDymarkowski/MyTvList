@@ -13,8 +13,6 @@ class UserProfile(models.Model):
 
     #watchlist = [favouriteShow,] removed favouriteShow
     watchlist = []
-    
-
 
 
     def __str__(self):

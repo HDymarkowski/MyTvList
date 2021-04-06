@@ -111,6 +111,15 @@ def topshows(request):
 
     context_dict = {}
 
+
+    if request.user.is_authenticated:
+
+        profile = get_object_or_404(UserProfile, user=request.user)
+
+        context_dict['profilepicture'] = profile.picture
+        context_dict['username'] = request.user
+
+
     context_dict['popular'] = tmdbSimpleApi.getPopular(6)
 
     for pop in context_dict['popular']:
@@ -136,6 +145,8 @@ def recommended(request):
     for rec in context_dict['recs']:
         rec['imgFile'] = tmdbSimpleApi.img(rec['poster_path'])
 
+    context_dict['profilepicture'] = profile.picture
+    context_dict['username'] = request.user
 
     response = render(request, 'Recommended.html', context=context_dict)
 
@@ -150,6 +161,14 @@ def castPage(request):
 
     for cred in context_dict['credits']:
         cred['imgFile'] = tmdbSimpleApi.img(cred['image'])
+
+    if request.user.is_authenticated:
+
+        profile = get_object_or_404(UserProfile, user=request.user)
+
+        context_dict['profilepicture'] = profile.picture
+        context_dict['username'] = request.user
+
     response = render(request, 'castPage.html',context=context_dict)
 
     return response
@@ -196,6 +215,14 @@ def showPage(request):
     for castMember in context_dict['cast']:
         castMember['imgFile'] = tmdbSimpleApi.img(castMember['image'])
 
+
+    if request.user.is_authenticated:
+
+        profile = get_object_or_404(UserProfile, user=request.user)
+
+        context_dict['profilepicture'] = profile.picture
+        context_dict['username'] = request.user
+
     response = render(request, 'showPage.html',context=context_dict)
     return response
 
@@ -210,6 +237,9 @@ def watchListPage(request):
     context_dict['shows'] = tmdbSimpleApi.getWatchListShows(watchList)
     for show in context_dict['shows']:
         show['imgFile'] = tmdbSimpleApi.img(show['poster_path'])
+
+    context_dict['profilepicture'] = profile.picture
+    context_dict['username'] = request.user
 
     response = render(request, 'watchList.html',context=context_dict)
     return response
