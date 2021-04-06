@@ -12,18 +12,7 @@
     </title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".default").click(function(){
-                $(".dropdown ul").toggleClass("active")
-            });
-             $(".dropdown ul li").click(function(){
-                var text = $(this).text();
-                $(".default").text(text);
-                $(".dropdown ul").removeClass("active");
-             })
-        });
-    </script>
+
     
 </head>
 <body>
@@ -66,11 +55,6 @@
                                 <div class="default">
                                     Shows                                    
                                 </div>
-                                <ul>
-                                    <li>Users</li> 
-                                    <li>Shows</li>
-                                    <li>?????</li>
-                                </ul>
                             </div>
                             <div class="search_field">
                                 <form method=POST action="{% url 'MyTvList:showPage' %}" autocomplete="off">
@@ -102,7 +86,8 @@
                     
                 {% endif %}
                 <div class="username">
-                    Welcome {{ username }}
+                    Welcome {{ username }}<br>
+                    <a href="{% url 'MyTvList:watchListPage' %}">Watchlist</a>
                 </div>
                 <div class="user_button">
                     <a href="{% url 'MyTvList:logout' %}" class="logbutton"><button id="tmave">Log Out</button></a>
