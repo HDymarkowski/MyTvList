@@ -162,7 +162,7 @@ def showPage(request):
             #next section of code for reviews
             Username = request.user
             #showId = search.tv(query=show)['results'][0]['id']
-            reviews = Review.objects.filter(showName=search_input)
+            reviews = Review.objects.filter(id=search_input)
 
             userRating = Review.rating
             userReview = Review.review
