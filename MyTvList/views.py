@@ -166,12 +166,12 @@ def showPage(request):
             #next section of code for reviews
             #Username = request.user
             #showId = search.tv(query=show)['results'][0]['id']
-            #reviews = Review.showPage.filter(id=search_input)
+            #reviews = Review.objects.filter(showName=search_input)
+            
+            #context_dict['reviews'] = reviews
 
-            #userRating = Review.rating
-            #userReview = Review.review
-            #context_dict['Rating'] = userRating
-            #context_dict['Review'] = userReview
+
+            #response = render(request, 'Reviews.html',context=context_dict)
             #end of review section
             
             context_dict['imgFile'] = tmdbSimpleApi.img(context_dict['poster_path'])
@@ -211,20 +211,18 @@ def watchListPage(request):
     response = render(request, 'watchList.html',context=context_dict)
     return response  
     
-def showUser(request):
-    context_dict = {}
-    if request.method == "POST":
-        if 'search_input' in request.POST:
-            search_input = request.POST['search_input']
-            searched_user = get_object_or_404(UserProfile, user=search_input)
+def addReview(request):
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
 
-            context_dict['Username'] = search_input
-            context_dict['UserIcon'] = searched_user.picture 
-            context_dict['FavouriteShow'] = searched_user.favourite_Show_Name
-
-
-
-            response = render(request, 'showPage.html',context=context_dict)
-            return response
+        if review_form.is_valid():
+            review = review_form.save()
+            review.save()
+        else:
+            print(review_form.errors)
     else:
-        return redirect(reverse('MyTvList:index'))
+        review_form = ReviewForm()
+
+    return render(request,
+                  'addReviews.html',
+                  context = {'add review': review_form,})
