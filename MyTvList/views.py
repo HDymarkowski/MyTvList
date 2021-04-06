@@ -259,7 +259,7 @@ def addReview(request):
         review_form = ReviewForm()
         print(review)
             
-    return render(request, 'addReview.html', context = {'add_review': review,})
+    return render(request, 'addReview.html', context = {'add_review': review_form,})
 
 
 def showUser(request):
